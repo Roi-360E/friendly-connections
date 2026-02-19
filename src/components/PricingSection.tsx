@@ -7,11 +7,11 @@ const plans = [
     name: "Starter",
     price: "Grátis",
     period: "",
-    description: "Ideal para experimentar a plataforma",
+    description: "Ideal para testar o poder dos criativos em massa",
     features: [
-      "5 cursos gratuitos",
-      "Comunidade básica",
-      "Certificados digitais",
+      "10 criativos por mês",
+      "Estrutura Gancho + Corpo + CTA",
+      "3 templates básicos",
       "Suporte por email",
     ],
     popular: false,
@@ -19,31 +19,31 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "R$ 49",
+    price: "R$ 97",
     period: "/mês",
-    description: "Para quem leva o aprendizado a sério",
+    description: "Para quem precisa escalar de verdade",
     features: [
-      "Acesso ilimitado a todos os cursos",
-      "IA de aprendizado personalizado",
-      "Projetos práticos com mentoria",
-      "Comunidade premium",
-      "Certificados reconhecidos",
+      "Criativos ilimitados",
+      "IA para sugestões de copy",
+      "Todos os templates premium",
+      "Analytics de performance",
+      "Exportação em massa",
       "Suporte prioritário 24/7",
     ],
     popular: true,
     cta: "Assinar agora",
   },
   {
-    name: "Empresas",
-    price: "Sob consulta",
-    period: "",
-    description: "Treine sua equipe com eficiência",
+    name: "Agência",
+    price: "R$ 297",
+    period: "/mês",
+    description: "Para agências e equipes de marketing",
     features: [
       "Tudo do plano Pro",
-      "Dashboard de gestão",
-      "Trilhas personalizadas",
-      "Relatórios avançados",
+      "Multi-clientes (ilimitado)",
+      "Workspace colaborativo",
       "API de integração",
+      "White-label",
       "Gerente de conta dedicado",
     ],
     popular: false,
@@ -64,11 +64,11 @@ const PricingSection = () => {
         >
           <span className="text-primary font-semibold text-sm uppercase tracking-widest">Preços</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
-            Invista no seu{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">futuro</span>
+            Invista em{" "}
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">escala</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Planos flexíveis que cabem no seu bolso. Comece grátis e evolua quando quiser.
+            Planos que se pagam no primeiro criativo que converte.
           </p>
         </motion.div>
 

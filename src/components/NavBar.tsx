@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { Zap, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const NavBar = () => {
@@ -22,8 +22,8 @@ const NavBar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-16">
         <a href="#" className="flex items-center gap-2">
-          <GraduationCap className="w-7 h-7 text-primary" />
-          <span className="text-lg font-bold">EduApp</span>
+          <Zap className="w-7 h-7 text-primary" />
+          <span className="text-lg font-bold">Escalax</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">

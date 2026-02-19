@@ -8,28 +8,28 @@ import {
 
 const faqs = [
   {
-    question: "Como funciona o período de teste gratuito?",
-    answer: "Você pode começar a usar a plataforma gratuitamente com acesso a 5 cursos completos. Não pedimos cartão de crédito. Quando quiser acesso completo, basta fazer upgrade para o plano Pro.",
+    question: "O que é a estrutura Gancho + Corpo + CTA?",
+    answer: "É a fórmula de criativos de alta conversão: o Gancho captura a atenção nos primeiros segundos, o Corpo entrega a proposta de valor, e o CTA (Call to Action) direciona a ação desejada. O Escalax automatiza a combinação desses elementos.",
   },
   {
-    question: "Os certificados são reconhecidos pelo mercado?",
-    answer: "Sim! Nossos certificados são emitidos com verificação digital e são reconhecidos por empresas parceiras. Muitos alunos incluem no LinkedIn e recebem oportunidades.",
+    question: "Como funciona a geração em massa?",
+    answer: "Você cadastra seus ganchos, corpos e CTAs e o Escalax gera todas as combinações possíveis automaticamente. Se você tem 10 ganchos, 5 corpos e 3 CTAs, são 150 criativos prontos em segundos.",
+  },
+  {
+    question: "Posso usar para qualquer nicho?",
+    answer: "Sim! Temos templates otimizados para e-commerce, infoprodutos, SaaS, serviços locais, aplicativos e mais. A estrutura Gancho + Corpo + CTA funciona para qualquer segmento.",
+  },
+  {
+    question: "Funciona para Meta Ads, Google Ads e TikTok Ads?",
+    answer: "Sim! Os criativos gerados podem ser usados em qualquer plataforma de anúncios. Temos formatos otimizados para cada canal.",
   },
   {
     question: "Posso cancelar a qualquer momento?",
-    answer: "Absolutamente. Sem multas, sem burocracia. Você pode cancelar diretamente pela plataforma e manterá acesso até o final do período pago.",
-  },
-  {
-    question: "Como funciona a IA de aprendizado?",
-    answer: "Nossa IA analisa seu desempenho nos exercícios, tempo de estudo e preferências para adaptar o conteúdo ao seu ritmo. Ela sugere revisões, identifica pontos fracos e otimiza sua trilha de aprendizado.",
+    answer: "Claro. Sem multas, sem burocracia. Cancele direto pela plataforma e mantenha acesso até o final do período pago.",
   },
   {
     question: "Qual a garantia de satisfação?",
-    answer: "Oferecemos 30 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do valor investido, sem perguntas.",
-  },
-  {
-    question: "Há suporte para dúvidas técnicas?",
-    answer: "Sim! Além do suporte por email e chat, assinantes Pro têm acesso a fóruns exclusivos com mentores e plantões de dúvidas ao vivo semanais.",
+    answer: "Oferecemos 7 dias de garantia incondicional. Se não ficar satisfeito, devolvemos 100% do valor investido.",
   },
 ];
 
@@ -50,7 +50,7 @@ const FAQSection = () => {
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">frequentes</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Tire suas dúvidas antes de começar.
+            Tire suas dúvidas sobre o Escalax.
           </p>
         </motion.div>
 

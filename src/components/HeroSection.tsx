@@ -21,7 +21,7 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
           >
             <Star className="w-4 h-4 fill-current" />
-            +10.000 alunos já transformaram suas carreiras
+            +5.000 profissionais já escalam seus criativos
           </motion.div>
 
           <motion.h1
@@ -30,9 +30,9 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold leading-tight mb-6"
           >
-            Aprenda no seu ritmo.{" "}
+            Crie criativos em massa.{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Evolua sem limites.
+              Escale sem limites.
             </span>
           </motion.h1>
 
@@ -42,8 +42,8 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            A plataforma de ensino que combina tecnologia de ponta com metodologias
-            comprovadas para acelerar seu aprendizado em até 3x.
+            A plataforma que gera criativos de alta conversão combinando Gancho, Corpo e CTA.
+            Produza dezenas de variações em minutos e domine seus anúncios.
           </motion.p>
 
           <motion.div

@@ -1,36 +1,36 @@
 import { motion } from "framer-motion";
-import { BookOpen, Brain, BarChart3, Users, Zap, Shield } from "lucide-react";
+import { Layers, Brain, BarChart3, Repeat, Zap, Shield } from "lucide-react";
 
 const features = [
   {
-    icon: Brain,
-    title: "Aprendizado Inteligente",
-    description: "IA que adapta o conteúdo ao seu nível e ritmo de aprendizado, garantindo máxima absorção.",
+    icon: Layers,
+    title: "Estrutura Gancho + Corpo + CTA",
+    description: "Monte criativos seguindo a fórmula comprovada: capture atenção, entregue valor e converta com CTAs poderosos.",
   },
   {
-    icon: BookOpen,
-    title: "Conteúdo Premium",
-    description: "Cursos criados por especialistas renomados, com material atualizado e exercícios práticos.",
+    icon: Brain,
+    title: "Geração com IA",
+    description: "Inteligência artificial que sugere variações de copy, headlines e CTAs otimizados para sua audiência.",
+  },
+  {
+    icon: Repeat,
+    title: "Produção em Massa",
+    description: "Gere dezenas de combinações de criativos em poucos cliques. Teste mais, descubra o que converte.",
   },
   {
     icon: BarChart3,
-    title: "Progresso Visual",
-    description: "Dashboards intuitivos para acompanhar sua evolução e identificar áreas de melhoria.",
-  },
-  {
-    icon: Users,
-    title: "Comunidade Ativa",
-    description: "Conecte-se com milhares de alunos, tire dúvidas e participe de projetos colaborativos.",
+    title: "Analytics de Performance",
+    description: "Acompanhe quais ganchos, corpos e CTAs performam melhor e otimize suas campanhas.",
   },
   {
     icon: Zap,
-    title: "Certificados Reconhecidos",
-    description: "Certificações aceitas pelo mercado que valorizam seu currículo e abrem portas.",
+    title: "Templates Prontos",
+    description: "Biblioteca de templates validados por nichos: e-commerce, infoprodutos, SaaS, serviços locais e mais.",
   },
   {
     icon: Shield,
-    title: "Garantia de 30 Dias",
-    description: "Teste sem risco. Se não ficar satisfeito, devolvemos 100% do seu investimento.",
+    title: "Garantia de 7 Dias",
+    description: "Teste sem risco. Se não multiplicar seus criativos, devolvemos 100% do seu investimento.",
   },
 ];
 
@@ -48,10 +48,10 @@ const FeaturesSection = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-widest">Funcionalidades</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
             Tudo que você precisa para{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">aprender de verdade</span>
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">escalar criativos</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ferramentas poderosas pensadas para transformar sua experiência de aprendizado.
+            Ferramentas poderosas para criar, testar e otimizar seus anúncios em escala.
           </p>
         </motion.div>
 
