@@ -4,16 +4,15 @@ import { Button } from "@/components/ui/button";
 
 const features = [
   "Acesso completo ao App Escalax",
-  "Geração de criativos em massa ilimitada",
+  "Multiplique 1 criativo em dezenas automaticamente",
   "Estrutura Gancho + Corpo + CTA",
-  "IA para sugestões de copy",
-  "Todos os templates premium",
-  "Analytics de performance",
-  "Exportação em massa",
-  "Aulas completas de tráfego pago",
-  "Módulos de copywriting avançado",
+  "Aulas de copy para criativos que vendem",
+  "Como gravar criativos que convertem",
+  "Templates de roteiros prontos para gravar",
+  "IA para sugestões de variações de copy",
+  "Exportação em massa de criativos",
   "Comunidade exclusiva de alunos",
-  "Atualizações vitalícias",
+  "Atualizações vitalícias do app e das aulas",
   "Suporte prioritário",
 ];
 
@@ -51,8 +50,8 @@ const PricingSection = () => {
           </div>
 
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">Escalax + Aulas</h3>
-            <p className="text-muted-foreground text-sm mb-6">App completo + curso de criativos que convertem</p>
+            <h3 className="text-2xl font-bold mb-2">Escalax + Aulas de Copy</h3>
+            <p className="text-muted-foreground text-sm mb-6">Aprenda a gravar criativos que vendem + multiplique com o app</p>
             <div className="flex items-baseline justify-center gap-2">
               <span className="text-muted-foreground line-through text-lg">R$ 497</span>
               <span className="text-5xl font-bold">R$ 297</span>
