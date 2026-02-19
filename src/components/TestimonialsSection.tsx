@@ -3,27 +3,27 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Ana Carolina",
-    role: "Desenvolvedora Full-Stack",
-    content: "Em 6 meses consegui minha primeira vaga como dev. A plataforma me guiou passo a passo, do zero ao emprego dos sonhos.",
+    name: "Lucas Ferreira",
+    role: "Gestor de Tráfego",
+    content: "Com o Escalax, passei de 5 para 50 criativos por semana. Meu ROAS dobrou porque consigo testar muito mais variações.",
     rating: 5,
   },
   {
-    name: "Ricardo Mendes",
-    role: "Designer UX/UI",
-    content: "A qualidade dos cursos é impressionante. Cada módulo tem exercícios práticos que realmente fixam o conhecimento.",
+    name: "Mariana Costa",
+    role: "Media Buyer",
+    content: "A estrutura de Gancho + Corpo + CTA simplificou demais meu processo. Criativos que antes levavam horas, faço em minutos.",
     rating: 5,
   },
   {
-    name: "Juliana Santos",
-    role: "Data Scientist",
-    content: "O sistema de IA que adapta o conteúdo é genial. Sinto que cada aula foi feita especialmente pra mim.",
+    name: "Rafael Souza",
+    role: "Dono de Agência",
+    content: "Minha equipe produz 10x mais criativos. O Escalax virou ferramenta obrigatória na agência para todos os clientes.",
     rating: 5,
   },
   {
-    name: "Felipe Oliveira",
-    role: "Product Manager",
-    content: "A comunidade é o grande diferencial. Fiz networking, encontrei mentores e até um cofundador para minha startup.",
+    name: "Camila Rocha",
+    role: "Infoprodutora",
+    content: "Descobri combinações de ganchos que nunca teria pensado sozinha. Minhas campanhas no Meta Ads nunca performaram tão bem.",
     rating: 5,
   },
 ];
@@ -41,11 +41,11 @@ const TestimonialsSection = () => {
         >
           <span className="text-primary font-semibold text-sm uppercase tracking-widest">Depoimentos</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
-            Quem aprende,{" "}
+            Quem escala,{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">recomenda</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Histórias reais de alunos que transformaram suas carreiras com nossa plataforma.
+            Veja como profissionais de marketing estão multiplicando resultados com o Escalax.
           </p>
         </motion.div>
 

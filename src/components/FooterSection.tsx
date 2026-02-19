@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import { Zap } from "lucide-react";
 
 const FooterSection = () => {
   return (
@@ -7,11 +7,11 @@ const FooterSection = () => {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <GraduationCap className="w-8 h-8 text-primary" />
-              <span className="text-xl font-bold">EduApp</span>
+              <Zap className="w-8 h-8 text-primary" />
+              <span className="text-xl font-bold">Escalax</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Transformando vidas através da educação de qualidade e tecnologia de ponta.
+              Crie criativos em massa com a fórmula Gancho + Corpo + CTA e escale seus anúncios.
             </p>
           </div>
           <div>
@@ -42,7 +42,7 @@ const FooterSection = () => {
           </div>
         </div>
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} EduApp. Todos os direitos reservados.
+          © {new Date().getFullYear()} Escalax. Todos os direitos reservados.
         </div>
       </div>
     </footer>
