@@ -2,53 +2,19 @@ import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const plans = [
-  {
-    name: "Starter",
-    price: "Grátis",
-    period: "",
-    description: "Ideal para testar o poder dos criativos em massa",
-    features: [
-      "10 criativos por mês",
-      "Estrutura Gancho + Corpo + CTA",
-      "3 templates básicos",
-      "Suporte por email",
-    ],
-    popular: false,
-    cta: "Começar grátis",
-  },
-  {
-    name: "Pro",
-    price: "R$ 97",
-    period: "/mês",
-    description: "Para quem precisa escalar de verdade",
-    features: [
-      "Criativos ilimitados",
-      "IA para sugestões de copy",
-      "Todos os templates premium",
-      "Analytics de performance",
-      "Exportação em massa",
-      "Suporte prioritário 24/7",
-    ],
-    popular: true,
-    cta: "Assinar agora",
-  },
-  {
-    name: "Agência",
-    price: "R$ 297",
-    period: "/mês",
-    description: "Para agências e equipes de marketing",
-    features: [
-      "Tudo do plano Pro",
-      "Multi-clientes (ilimitado)",
-      "Workspace colaborativo",
-      "API de integração",
-      "White-label",
-      "Gerente de conta dedicado",
-    ],
-    popular: false,
-    cta: "Falar com vendas",
-  },
+const features = [
+  "Acesso completo ao App Escalax",
+  "Geração de criativos em massa ilimitada",
+  "Estrutura Gancho + Corpo + CTA",
+  "IA para sugestões de copy",
+  "Todos os templates premium",
+  "Analytics de performance",
+  "Exportação em massa",
+  "Aulas completas de tráfego pago",
+  "Módulos de copywriting avançado",
+  "Comunidade exclusiva de alunos",
+  "Atualizações vitalícias",
+  "Suporte prioritário",
 ];
 
 const PricingSection = () => {
@@ -62,62 +28,57 @@ const PricingSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Preços</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Oferta especial</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
-            Invista em{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">escala</span>
+            Tudo em um{" "}
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">único acesso</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Planos que se pagam no primeiro criativo que converte.
+            App + Aulas completas. Tudo o que você precisa para escalar seus criativos.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`p-8 rounded-2xl border relative ${
-                plan.popular
-                  ? "bg-card border-primary shadow-2xl shadow-primary/10 scale-105"
-                  : "bg-card border-border"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4" />
-                  Mais popular
-                </div>
-              )}
-              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{plan.description}</p>
-              <div className="mb-6">
-                <span className="text-4xl font-bold">{plan.price}</span>
-                {plan.period && <span className="text-muted-foreground">{plan.period}</span>}
-              </div>
-              <Button
-                className={`w-full py-6 rounded-xl text-base font-semibold mb-8 ${
-                  plan.popular
-                    ? "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
-              >
-                {plan.cta}
-              </Button>
-              <ul className="space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-sm">
-                    <Check className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-lg mx-auto p-10 rounded-2xl border border-primary bg-card shadow-2xl shadow-primary/10 relative"
+        >
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold flex items-center gap-1.5">
+            <Sparkles className="w-4 h-4" />
+            Acesso completo
+          </div>
+
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">Escalax + Aulas</h3>
+            <p className="text-muted-foreground text-sm mb-6">App completo + curso de criativos que convertem</p>
+            <div className="flex items-baseline justify-center gap-2">
+              <span className="text-muted-foreground line-through text-lg">R$ 497</span>
+              <span className="text-5xl font-bold">R$ 297</span>
+            </div>
+            <span className="text-muted-foreground text-sm">pagamento único · acesso vitalício</span>
+          </div>
+
+          <Button
+            className="w-full py-6 rounded-xl text-base font-semibold mb-8 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+          >
+            Garantir meu acesso agora
+          </Button>
+
+          <ul className="space-y-3">
+            {features.map((feature) => (
+              <li key={feature} className="flex items-start gap-3 text-sm">
+                <Check className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-center text-muted-foreground text-xs mt-8">
+            🔒 Garantia de 7 dias ou seu dinheiro de volta
+          </p>
+        </motion.div>
       </div>
     </section>
   );
