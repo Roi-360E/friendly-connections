@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import screenshot5 from "@/assets/app-screenshot-5.png";
+import TypingChat from "@/components/TypingChat";
 import screenshot6 from "@/assets/app-screenshot-6.png";
 import screenshot2 from "@/assets/app-screenshot-2.png";
 
@@ -32,8 +32,8 @@ const ShowcaseSection = () => {
             transition={{ duration: 0.5 }}
             className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
           >
-            <div className="rounded-xl overflow-hidden border border-primary/10 mb-6 w-full max-w-[200px]">
-              <img src={screenshot5} alt="RoteiroPRO IA - gerador de roteiros" className="w-full" />
+            <div className="mb-6 w-full">
+              <TypingChat />
             </div>
             <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #1</span>
             <h3 className="text-lg font-bold mb-2">Gerador de Roteiros com IA</h3>
