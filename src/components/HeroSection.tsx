@@ -5,7 +5,7 @@ import screenshot1 from "@/assets/app-screenshot-1.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden grid-bg pt-20">
+    <section className="relative min-h-[auto] lg:min-h-screen flex items-center overflow-hidden grid-bg pt-24 pb-12 lg:pt-20 lg:pb-0">
       {/* Gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-primary/15 blur-[150px]" />
