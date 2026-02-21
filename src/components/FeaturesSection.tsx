@@ -23,11 +23,6 @@ const features = [
     description: "Acompanhe quais ganchos, corpos e CTAs performam melhor e otimize suas campanhas.",
   },
   {
-    icon: Zap,
-    title: "Templates Prontos",
-    description: "Biblioteca de templates validados por nichos: e-commerce, infoprodutos, SaaS, serviços locais e mais.",
-  },
-  {
     icon: Shield,
     title: "Garantia de 7 Dias",
     description: "Teste sem risco. Se não multiplicar seus criativos, devolvemos 100% do seu investimento.",
