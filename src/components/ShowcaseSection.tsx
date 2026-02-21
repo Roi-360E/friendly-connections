@@ -49,10 +49,8 @@ const ShowcaseSection = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
           >
-            <div className="relative rounded-xl overflow-hidden mb-6 w-full">
+            <div className="neon-pop-image mb-6 w-full">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
             </div>
             <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #2</span>
             <h3 className="text-lg font-bold mb-2">Multiplicação em Massa</h3>
@@ -68,7 +66,7 @@ const ShowcaseSection = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
           >
-            <div className="rounded-xl overflow-hidden border border-primary/10 mb-6 w-full">
+            <div className="neon-pop-image mb-6 w-full">
               <img src={screenshot2} alt="Configurações de processamento" className="w-full" />
             </div>
             <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #3</span>

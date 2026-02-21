@@ -74,7 +74,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-primary/20">
+            <div className="neon-pop-image">
               <img
                 src={screenshot1}
                 alt="Dashboard Escalax mostrando a geração de criativos"

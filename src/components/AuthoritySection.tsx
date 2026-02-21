@@ -16,7 +16,7 @@ const AuthoritySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl overflow-hidden border border-primary/10"
+            className="neon-pop-image"
           >
             <img src={screenshot7} alt="Escalax em ação - preview de criativos" className="w-full" />
           </motion.div>
