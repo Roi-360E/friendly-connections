@@ -74,13 +74,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden neon-pulse border border-primary/20">
+            <div className="relative rounded-2xl overflow-hidden">
               <img
                 src={screenshot1}
                 alt="Dashboard Escalax mostrando a geração de criativos"
                 className="w-full rounded-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-transparent" />
             </div>
           </motion.div>
         </div>
