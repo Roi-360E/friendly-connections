@@ -42,7 +42,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
+              className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed mx-auto lg:mx-0"
             >
               A ferramenta que transforma 1 roteiro em 100+ criativos validados.
               Use a lógica de concatenação dos grandes players para escalar no Facebook e TikTok Ads sem esforço.
