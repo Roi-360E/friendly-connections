@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Zap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import escalaxLogo from "@/assets/escalaxpro-logo.png";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,8 @@ const NavBar = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <Zap className="w-6 h-6 text-primary" />
-          <span className="text-xl font-bold font-mono-title tracking-tight">ESCALAX</span>
+          <img src={escalaxLogo} alt="EscalaXpro" className="w-8 h-8 rounded" />
+          <span className="text-xl font-bold font-mono-title tracking-tight">ESCALAXPRO</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
