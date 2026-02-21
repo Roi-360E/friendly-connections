@@ -15,12 +15,12 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Copy */}
-          <div>
+          <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary text-xs font-mono-title mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary text-xs font-mono-title mb-6 mx-auto lg:mx-0"
             >
               <Zap className="w-3 h-3" />
               VÍDEOS PROCESSADOS EM MENOS DE 1 MINUTO
@@ -52,6 +52,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col items-center lg:items-start"
             >
               <Button
                 size="lg"
@@ -60,7 +61,7 @@ const HeroSection = () => {
                 QUERO MEU ACESSO AGORA
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-xs text-muted-foreground mt-3">
+              <p className="text-xs text-muted-foreground mt-3 text-center lg:text-left">
                 🔒 Acesso imediato • Garantia de 7 dias
               </p>
             </motion.div>
