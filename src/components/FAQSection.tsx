@@ -8,53 +8,48 @@ import {
 
 const faqs = [
   {
-    question: "O que é a estrutura Gancho + Corpo + CTA?",
-    answer: "É a fórmula de criativos de alta conversão: o Gancho captura a atenção nos primeiros segundos, o Corpo entrega a proposta de valor, e o CTA (Call to Action) direciona a ação desejada. O Escalax automatiza a combinação desses elementos.",
+    question: "O que é a lógica de Gancho + Corpo + CTA?",
+    answer: "É a estrutura usada pelos maiores players de anúncios. O Gancho prende a atenção nos 3 primeiros segundos, o Corpo gera desejo com uma explicação lógica, e o CTA converte com uma chamada para ação. O Escalax combina todas as variações automaticamente.",
   },
   {
-    question: "Como funciona a geração em massa?",
-    answer: "Você cadastra seus ganchos, corpos e CTAs e o Escalax gera todas as combinações possíveis automaticamente. Se você tem 10 ganchos, 5 corpos e 3 CTAs, são 150 criativos prontos em segundos.",
+    question: "Quantos criativos consigo gerar?",
+    answer: "Depende de quantos vídeos você sobe. Com 10 ganchos, 5 corpos e 2 CTAs, por exemplo, você gera 100 criativos únicos em uma única leva. Tudo processado em menos de 1 minuto.",
   },
   {
-    question: "Posso usar para qualquer nicho?",
-    answer: "Sim! Temos templates otimizados para e-commerce, infoprodutos, SaaS, serviços locais, aplicativos e mais. A estrutura Gancho + Corpo + CTA funciona para qualquer segmento.",
+    question: "Funciona para qualquer nicho?",
+    answer: "Sim! A lógica de concatenação funciona para qualquer vertical: e-commerce, infoprodutos, serviços locais, apps, SaaS e mais.",
   },
   {
-    question: "Funciona para Meta Ads, Google Ads e TikTok Ads?",
-    answer: "Sim! Os criativos gerados podem ser usados em qualquer plataforma de anúncios. Temos formatos otimizados para cada canal.",
+    question: "Funciona no Facebook e TikTok Ads?",
+    answer: "Sim. Os criativos são exportados em formatos compatíveis com todas as plataformas: Facebook, Instagram, TikTok, YouTube e Google Ads.",
   },
   {
-    question: "Posso cancelar a qualquer momento?",
-    answer: "Claro. Sem multas, sem burocracia. Cancele direto pela plataforma e mantenha acesso até o final do período pago.",
+    question: "E se eu não gostar?",
+    answer: "Sem risco. Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do seu dinheiro, sem perguntas.",
   },
   {
-    question: "Qual a garantia de satisfação?",
-    answer: "Oferecemos 7 dias de garantia incondicional. Se não ficar satisfeito, devolvemos 100% do valor investido.",
+    question: "As aulas estão inclusas?",
+    answer: "Sim! Você recebe o acesso completo ao app Escalax + Masterclass de Copywriting + Aulas de como gravar criativos que convertem. Tudo incluso no valor único.",
   },
 ];
 
 const FAQSection = () => {
   return (
-    <section className="py-24 bg-muted/50" id="faq">
+    <section id="faq" className="py-24 relative grid-bg">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-widest">FAQ</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
-            Perguntas{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">frequentes</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Tire suas dúvidas sobre o Escalax.
-          </p>
+          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
+            Dúvidas
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold">Perguntas Frequentes</h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
               <motion.div
@@ -62,13 +57,13 @@ const FAQSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
               >
-                <AccordionItem value={`item-${index}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-lg data-[state=open]:border-primary/20 transition-all">
-                  <AccordionTrigger className="text-left font-semibold text-base py-5 hover:no-underline">
+                <AccordionItem value={`item-${index}`} className="glass-card rounded-xl px-6 border-0">
+                  <AccordionTrigger className="text-left text-sm font-medium hover:text-primary transition-colors">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
