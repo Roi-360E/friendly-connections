@@ -16,9 +16,12 @@ const AuthoritySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl overflow-hidden border border-primary/10 neon-pulse"
+            className="relative rounded-2xl overflow-hidden"
           >
             <img src={screenshot7} alt="Escalax em ação - preview de criativos" className="w-full" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-transparent" />
           </motion.div>
 
           <motion.div
