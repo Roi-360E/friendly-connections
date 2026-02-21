@@ -18,7 +18,7 @@ const AuthoritySection = () => {
             transition={{ duration: 0.6 }}
             className="rounded-2xl overflow-hidden border border-primary/10 neon-pulse"
           >
-            <img src={screenshot7} alt="Viral Flux em ação - preview de criativos" className="w-full" />
+            <img src={screenshot7} alt="Escalax em ação - preview de criativos" className="w-full" />
           </motion.div>
 
           <motion.div

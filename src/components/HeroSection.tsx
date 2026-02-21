@@ -34,7 +34,7 @@ const HeroSection = () => {
             >
               Fature 10k multiplicando seus anúncios com a Inteligência do{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Viral Flux.
+                Escalax.
               </span>
             </motion.h1>
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden neon-pulse border border-primary/20">
               <img
                 src={screenshot1}
-                alt="Dashboard Viral Flux mostrando a geração de criativos"
+                alt="Dashboard Escalax mostrando a geração de criativos"
                 className="w-full rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />

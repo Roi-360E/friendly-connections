@@ -1,47 +1,28 @@
-import { Zap } from "lucide-react";
+import { Zap, Shield } from "lucide-react";
 
 const FooterSection = () => {
   return (
-    <footer className="py-16 border-t border-border">
+    <footer className="border-t border-border/50 py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Zap className="w-8 h-8 text-primary" />
-              <span className="text-xl font-bold">Escalax</span>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Crie criativos em massa com a fórmula Gancho + Corpo + CTA e escale seus anúncios.
-            </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <Zap className="w-5 h-5 text-primary" />
+            <span className="font-bold font-mono-title">ESCALAX</span>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4">Produto</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#funcionalidades" className="hover:text-primary transition-colors">Funcionalidades</a></li>
-              <li><a href="#precos" className="hover:text-primary transition-colors">Preços</a></li>
-              <li><a href="#depoimentos" className="hover:text-primary transition-colors">Depoimentos</a></li>
-              <li><a href="#faq" className="hover:text-primary transition-colors">FAQ</a></li>
-            </ul>
+
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <a href="#" className="hover:text-primary transition-colors">Termos de Uso</a>
+            <a href="#" className="hover:text-primary transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-primary transition-colors">Suporte</a>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4">Empresa</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Sobre nós</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Carreiras</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contato</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacidade</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Cookies</a></li>
-            </ul>
+
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Shield className="w-4 h-4" />
+            <span>SSL Seguro • Pagamento protegido</span>
           </div>
         </div>
-        <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+
+        <div className="text-center mt-8 text-xs text-muted-foreground">
           © {new Date().getFullYear()} Escalax. Todos os direitos reservados.
         </div>
       </div>
