@@ -105,9 +105,16 @@ const TypingChat = () => {
       </div>
 
       {/* Input bar */}
-      <div className="px-4 pb-4">
+      <div className="px-4 pb-4 pt-2">
         <div className="flex items-center gap-2 bg-muted/30 rounded-full px-4 py-2.5 border border-border/50">
-          <span className="text-xs text-muted-foreground flex-1">Descreva seu vídeo...</span>
+          <span className="text-xs text-muted-foreground flex-1 flex items-center">
+            Descreva seu vídeo...
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ duration: 0.7, repeat: Infinity, repeatType: "reverse" }}
+              className="inline-block w-[1.5px] h-[12px] bg-muted-foreground/60 ml-0.5"
+            />
+          </span>
           <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
             <MessageCircle className="w-3.5 h-3.5 text-primary-foreground" />
           </div>
