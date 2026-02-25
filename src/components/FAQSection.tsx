@@ -24,12 +24,8 @@ const faqs = [
     answer: "Sim. Os criativos são exportados em formatos compatíveis com todas as plataformas: Facebook, Instagram, TikTok, YouTube e Google Ads.",
   },
   {
-    question: "E se eu não gostar?",
-    answer: "Sem risco. Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do seu dinheiro, sem perguntas.",
-  },
-  {
-    question: "As aulas estão inclusas?",
-    answer: "Sim! Você recebe o acesso completo ao app Escalax + Masterclass de Copywriting + Aulas de como gravar criativos que convertem. Tudo incluso no valor único.",
+    question: "É realmente gratuito?",
+    answer: "Sim! Você pode se cadastrar e usar a plataforma gratuitamente. Basta criar sua conta e começar a multiplicar seus criativos.",
   },
 ];
 
