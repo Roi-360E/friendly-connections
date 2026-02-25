@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -56,15 +56,18 @@ const HeroSection = () => {
           className="w-full max-w-3xl mb-10"
         >
           <div className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              playsInline
-              onEnded={() => setIsPlaying(false)}
-              style={{ display: isPlaying ? "block" : "none" }}
-            >
-              <source src="" type="video/mp4" />
-            </video>
+            {/* Adicione a URL do seu vídeo de vendas no src abaixo */}
+            {isPlaying && (
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                playsInline
+                onEnded={() => setIsPlaying(false)}
+                onError={() => setIsPlaying(false)}
+              >
+                {/* <source src="SEU_VIDEO_URL_AQUI" type="video/mp4" /> */}
+              </video>
+            )}
 
             {!isPlaying && (
               <div
