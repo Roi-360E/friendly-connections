@@ -4,13 +4,14 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import escalaxLogo from "@/assets/escalaxpro-logo.png";
 
+const SIGNUP_URL = "https://deploysites.online/";
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
     { label: "Como Funciona", href: "#metodo" },
     { label: "Ferramenta", href: "#ferramenta" },
-    { label: "Oferta", href: "#oferta" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -36,9 +37,11 @@ const NavBar = () => {
               {link.label}
             </a>
           ))}
-          <Button size="sm" className="neon-btn text-primary-foreground border-0 hover:scale-105 transition-transform">
-            QUERO MEU ACESSO
-          </Button>
+          <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+            <Button size="sm" className="neon-btn text-primary-foreground border-0 hover:scale-105 transition-transform">
+              CADASTRE-SE GRÁTIS
+            </Button>
+          </a>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
@@ -58,9 +61,11 @@ const NavBar = () => {
                 {link.label}
               </a>
             ))}
-            <Button className="neon-btn text-primary-foreground border-0 w-full">
-              QUERO MEU ACESSO
-            </Button>
+            <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="neon-btn text-primary-foreground border-0 w-full">
+                CADASTRE-SE GRÁTIS
+              </Button>
+            </a>
           </div>
         </motion.div>
       )}

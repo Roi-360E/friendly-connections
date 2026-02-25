@@ -24,8 +24,8 @@ const features = [
   },
   {
     icon: Shield,
-    title: "Garantia de 7 Dias",
-    description: "Teste sem risco. Se não multiplicar seus criativos, devolvemos 100% do seu investimento.",
+    title: "Segurança e Confiabilidade",
+    description: "Infraestrutura robusta em nuvem com processamento seguro para todos os seus criativos.",
   },
 ];
 

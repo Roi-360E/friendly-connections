@@ -1,9 +1,20 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Zap, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import screenshot1 from "@/assets/app-screenshot-1.png";
 
+const SIGNUP_URL = "https://deploysites.online/";
+
 const HeroSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(true);
+    videoRef.current?.play();
+  };
+
   return (
     <section className="relative min-h-[auto] lg:min-h-screen flex items-center overflow-hidden grid-bg pt-24 pb-12 lg:pt-20 lg:pb-0">
       {/* Gradient orbs */}
@@ -13,6 +24,44 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
+        {/* Video Player */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto mb-12"
+        >
+          <div className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              playsInline
+              onEnded={() => setIsPlaying(false)}
+              style={{ display: isPlaying ? "block" : "none" }}
+            >
+              {/* User will add video source */}
+              <source src="" type="video/mp4" />
+            </video>
+
+            {!isPlaying && (
+              <div
+                className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+                onClick={handlePlayVideo}
+              >
+                <img
+                  src={screenshot1}
+                  alt="Preview do vídeo"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-background/40" />
+                <div className="relative z-10 w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 transition-transform">
+                  <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Copy */}
           <div className="text-center lg:text-left">
@@ -54,15 +103,17 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="flex flex-col items-center lg:items-start"
             >
-              <Button
-                size="lg"
-                className="neon-btn text-primary-foreground text-lg px-10 py-7 rounded-xl border-0 hover:scale-105 transition-all shadow-lg shadow-primary/25"
-              >
-                QUERO MEU ACESSO AGORA
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="neon-btn text-primary-foreground text-lg px-10 py-7 rounded-xl border-0 hover:scale-105 transition-all shadow-lg shadow-primary/25"
+                >
+                  CADASTRE-SE GRATUITAMENTE
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </a>
               <p className="text-xs text-muted-foreground mt-3 text-center lg:text-left">
-                🔒 Acesso imediato • Garantia de 7 dias
+                🔒 Acesso imediato • 100% gratuito
               </p>
             </motion.div>
           </div>

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import TypingChat from "@/components/TypingChat";
 import screenshot6 from "@/assets/app-screenshot-6.png";
-import screenshot2 from "@/assets/app-screenshot-2.png";
 
 const ShowcaseSection = () => {
   return (
@@ -14,7 +13,7 @@ const ShowcaseSection = () => {
           className="text-center mb-16"
         >
           <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
-            Bônus Inclusos
+            Recursos Extras
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Tudo que você precisa para{" "}
@@ -24,7 +23,7 @@ const ShowcaseSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +34,7 @@ const ShowcaseSection = () => {
             <div className="mb-6 w-full">
               <TypingChat />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #1</span>
+            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">DESTAQUE #1</span>
             <h3 className="text-lg font-bold mb-2">Gerador de Roteiros com IA</h3>
             <p className="text-sm text-muted-foreground">
               Copywriter veterano com 50+ anos de experiência integrado para criar roteiros sob medida.
@@ -52,27 +51,10 @@ const ShowcaseSection = () => {
             <div className="neon-pop-image mb-6 w-full">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #2</span>
+            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">DESTAQUE #2</span>
             <h3 className="text-lg font-bold mb-2">Multiplicação em Massa</h3>
             <p className="text-sm text-muted-foreground">
               10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para rodar.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
-          >
-            <div className="neon-pop-image mb-6 w-full">
-              <img src={screenshot2} alt="Configurações de processamento" className="w-full" />
-            </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">BÔNUS #3</span>
-            <h3 className="text-lg font-bold mb-2">Masterclass de Copywriting</h3>
-            <p className="text-sm text-muted-foreground">
-              Aulas completas de copy para criativos que convertem de verdade.
             </p>
           </motion.div>
         </div>
