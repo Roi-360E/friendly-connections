@@ -15,6 +15,31 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Detecta navegador in-app (Instagram, Facebook, etc.) e redireciona para navegador externo
+      (function() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var isInstagram = ua.indexOf('Instagram') > -1;
+        var isFacebook = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
+        var isInApp = isInstagram || isFacebook;
+        
+        if (isInApp) {
+          var url = window.location.href;
+          // Android: intent:// abre no Chrome
+          if (/android/i.test(ua)) {
+            window.location.href = 'intent://' + url.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+          } 
+          // iOS: tenta abrir no Safari via window.open
+          else if (/iPhone|iPad|iPod/i.test(ua)) {
+            // Fallback: abre em nova aba que força Safari
+            window.location.href = 'x-safari-https://' + url.replace(/https?:\/\//, '');
+            setTimeout(function() {
+              window.location.href = url;
+            }, 500);
+          }
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
