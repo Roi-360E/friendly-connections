@@ -16,27 +16,56 @@
   <body>
     <div id="root"></div>
     <script>
-      // Detecta navegador in-app (Instagram, Facebook, etc.) e redireciona para navegador externo
       (function() {
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         var isInstagram = ua.indexOf('Instagram') > -1;
         var isFacebook = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
-        var isInApp = isInstagram || isFacebook;
-        
+        var isLinkedIn = ua.indexOf('LinkedInApp') > -1;
+        var isLine = ua.indexOf('Line/') > -1;
+        var isWebView = ua.indexOf('wv') > -1 || ua.indexOf('WebView') > -1;
+        var isInApp = isInstagram || isFacebook || isLinkedIn || isLine || isWebView;
+
         if (isInApp) {
           var url = window.location.href;
-          // Android: intent:// abre no Chrome
+
           if (/android/i.test(ua)) {
-            window.location.href = 'intent://' + url.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
-          } 
-          // iOS: tenta abrir no Safari via window.open
-          else if (/iPhone|iPad|iPod/i.test(ua)) {
-            // Fallback: abre em nova aba que força Safari
-            window.location.href = 'x-safari-https://' + url.replace(/https?:\/\//, '');
+            // Tenta intent para Chrome
+            var intentUrl = 'intent://' + url.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+            window.location.href = intentUrl;
+            // Fallback: googlechrome://
             setTimeout(function() {
-              window.location.href = url;
-            }, 500);
+              window.location.href = 'googlechrome://navigate?url=' + encodeURIComponent(url);
+            }, 300);
+            // Fallback final: abre em nova janela
+            setTimeout(function() {
+              window.open(url, '_system');
+            }, 600);
+          } else if (/iPhone|iPad|iPod/i.test(ua)) {
+            // iOS: tenta múltiplas abordagens
+            // 1. googlechrome:// scheme
+            var chromeUrl = url.replace('https://', 'googlechromes://').replace('http://', 'googlechrome://');
+            window.location.href = chromeUrl;
+            // 2. Fallback: x-safari
+            setTimeout(function() {
+              window.location.href = 'x-safari-' + url;
+            }, 400);
+            // 3. Fallback final: window.open com _blank
+            setTimeout(function() {
+              window.open(url, '_blank');
+            }, 800);
           }
+
+          // Esconde o conteúdo e mostra botão manual como último recurso
+          setTimeout(function() {
+            var root = document.getElementById('root');
+            if (root && document.visibilityState !== 'hidden') {
+              root.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0a;color:#fff;padding:24px;text-align:center;font-family:sans-serif;">' +
+                '<p style="font-size:18px;margin-bottom:24px;">Para a melhor experiência, abra no navegador:</p>' +
+                '<a href="' + url + '" target="_blank" rel="noopener" style="display:inline-block;padding:16px 32px;background:#6366f1;color:#fff;border-radius:12px;font-size:16px;font-weight:bold;text-decoration:none;">ABRIR NO NAVEGADOR</a>' +
+                '<p style="font-size:13px;margin-top:16px;color:#888;">Toque nos 3 pontos (⋮) acima e selecione "Abrir no Chrome"</p>' +
+              '</div>';
+            }
+          }, 1200);
         }
       })();
     </script>
