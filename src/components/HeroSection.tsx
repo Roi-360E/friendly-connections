@@ -66,7 +66,7 @@ const HeroSection = () => {
                 onClick={() => setIsPlaying(true)}
               >
                 <img
-                  src={screenshot1}
+                  src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`}
                   alt="Preview do vídeo"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
