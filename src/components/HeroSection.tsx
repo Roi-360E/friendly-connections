@@ -1,19 +1,14 @@
-import { useState, useRef, lazy, Suspense } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import screenshot1 from "@/assets/app-screenshot-1.png";
 
 const SIGNUP_URL = "https://deploysites.online/";
+const YOUTUBE_VIDEO_ID = "QzbsSYNa_KM";
 
 const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handlePlayVideo = () => {
-    setIsPlaying(true);
-    videoRef.current?.play();
-  };
 
   return (
     <section className="relative overflow-hidden grid-bg pt-28 pb-16">
@@ -56,23 +51,19 @@ const HeroSection = () => {
           className="w-full max-w-3xl mb-10"
         >
           <div className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
-            {/* Adicione a URL do seu vídeo de vendas no src abaixo */}
-            {isPlaying && (
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover"
-                playsInline
-                onEnded={() => setIsPlaying(false)}
-                onError={() => setIsPlaying(false)}
-              >
-                {/* <source src="SEU_VIDEO_URL_AQUI" type="video/mp4" /> */}
-              </video>
-            )}
-
-            {!isPlaying && (
+            {isPlaying ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=0&disablekb=1&iv_load_policy=3&playsinline=1`}
+                className="absolute inset-0 w-full h-full"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="Vídeo de apresentação"
+                frameBorder="0"
+              />
+            ) : (
               <div
                 className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                onClick={handlePlayVideo}
+                onClick={() => setIsPlaying(true)}
               >
                 <img
                   src={screenshot1}
