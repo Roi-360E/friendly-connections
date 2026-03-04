@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,72 @@ import screenshot1 from "@/assets/app-screenshot-1.png";
 const SIGNUP_URL = "https://deploysites.online/";
 const YOUTUBE_VIDEO_ID = "QzbsSYNa_KM";
 
+// Load YouTube IFrame API
+const loadYTApi = (() => {
+  let promise: Promise<void> | null = null;
+  return () => {
+    if (!promise) {
+      promise = new Promise<void>((resolve) => {
+        if ((window as any).YT?.Player) { resolve(); return; }
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+        (window as any).onYouTubeIframeAPIReady = () => resolve();
+      });
+    }
+    return promise;
+  };
+})();
+
 const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const playerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<number | null>(null);
+
+  const startTracking = useCallback(() => {
+    if (intervalRef.current) return;
+    intervalRef.current = window.setInterval(() => {
+      const p = playerRef.current;
+      if (p?.getCurrentTime && p?.getDuration) {
+        const duration = p.getDuration();
+        if (duration > 0) setProgress((p.getCurrentTime() / duration) * 100);
+      }
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, []);
+
+  const handlePlay = async () => {
+    setIsPlaying(true);
+    await loadYTApi();
+    // small delay for DOM to render the div
+    setTimeout(() => {
+      playerRef.current = new (window as any).YT.Player("yt-player", {
+        videoId: YOUTUBE_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          controls: 0,
+          disablekb: 1,
+          iv_load_policy: 3,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (e: any) => { e.target.playVideo(); startTracking(); },
+          onStateChange: (e: any) => {
+            if (e.data === 0) { setProgress(100); if (intervalRef.current) clearInterval(intervalRef.current); intervalRef.current = null; }
+            if (e.data === 1) startTracking();
+          },
+        },
+      });
+    }, 100);
+  };
 
   return (
     <section className="relative overflow-hidden grid-bg pt-28 pb-16">
@@ -50,20 +114,13 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="w-full max-w-3xl mb-10"
         >
-          <div className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
+          <div ref={containerRef} className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
             {isPlaying ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=0&disablekb=1&iv_load_policy=3&playsinline=1`}
-                className="absolute inset-0 w-full h-full"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                title="Vídeo de apresentação"
-                frameBorder="0"
-              />
+              <div id="yt-player" className="absolute inset-0 w-full h-full" />
             ) : (
               <div
                 className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                onClick={() => setIsPlaying(true)}
+                onClick={handlePlay}
               >
                 <img
                   src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`}
@@ -74,6 +131,15 @@ const HeroSection = () => {
                 <div className="relative z-10 w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 transition-transform">
                   <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
                 </div>
+              </div>
+            )}
+            {/* Progress bar */}
+            {isPlaying && (
+              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-muted/40 z-20">
+                <div
+                  className="h-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.6)] transition-all duration-500 ease-linear"
+                  style={{ width: `${progress}%` }}
+                />
               </div>
             )}
           </div>
