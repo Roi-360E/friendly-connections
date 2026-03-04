@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import screenshot1 from "@/assets/app-screenshot-1.png";
 
 const SIGNUP_URL = "https://deploysites.online/";
-const YOUTUBE_VIDEO_ID = "QzbsSYNa_KM";
+const YOUTUBE_VIDEO_ID = "wYbHpveuQQs";
 
 // Load YouTube IFrame API
 const loadYTApi = (() => {
