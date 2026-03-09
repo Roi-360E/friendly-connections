@@ -54,19 +54,7 @@
             setTimeout(function() { window.open(url, '_blank'); }, 300);
           }
 
-          // Fallback visual apenas se nada funcionou após 2.5s
-          setTimeout(function() {
-            if (document.visibilityState !== 'hidden') {
-              var root = document.getElementById('root');
-              if (root) {
-                root.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0a;color:#fff;padding:24px;text-align:center;font-family:sans-serif;">' +
-                  '<p style="font-size:18px;margin-bottom:24px;">Para a melhor experiência, abra no navegador:</p>' +
-                  '<a href="' + url + '" target="_blank" rel="noopener" style="display:inline-block;padding:16px 32px;background:#6366f1;color:#fff;border-radius:12px;font-size:16px;font-weight:bold;text-decoration:none;">ABRIR NO NAVEGADOR</a>' +
-                  '<p style="font-size:13px;margin-top:16px;color:#888;">Toque nos 3 pontos (⋮) acima e selecione "Abrir no Chrome"</p>' +
-                '</div>';
-              }
-            }
-          }, 2500);
+          // Se o redirect falhar, o site carrega normalmente no WebView
         }
       })();
     </script>
