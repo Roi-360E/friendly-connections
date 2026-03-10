@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Flame, Clock, Code, Rocket } from "lucide-react";
+import { ArrowRight, Play, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SIGNUP_URL = "https://deploysites.online/";
@@ -69,46 +69,37 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-16">
-      {/* Subtle purple ambient glow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-secondary/10 blur-[180px]" />
-        <div className="absolute -bottom-60 -left-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-        {/* OneClick-style top pill */}
+    <section className="relative pt-28 pb-20">
+      <div className="container mx-auto px-6 flex flex-col items-center text-center">
+        {/* OneClick-style pill badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 py-2.5 px-6 rounded-full border border-primary/30 bg-primary/10 inline-flex items-center gap-2"
+          className="mb-8 py-2.5 px-6 rounded-full border border-border bg-card inline-flex items-center gap-2"
         >
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-sm font-medium text-primary">
+          <span className="w-2 h-2 rounded-full bg-primary" />
+          <span className="text-sm font-medium text-muted-foreground">
             A tecnologia que já otimizou 20.642 campanhas dos maiores players do mercado
           </span>
         </motion.div>
 
-        {/* Bold uppercase headline (OneClick style) */}
+        {/* Bold uppercase headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 max-w-5xl uppercase tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-5 max-w-5xl uppercase tracking-tight text-foreground"
         >
-          A ÚNICA I.A. QUE PROTEGE SEU ORÇAMENTO E{" "}
-          <span className="text-primary">
-            ESCALA SUAS CAMPANHAS POR VOCÊ
-          </span>
+          Crie 300 criativos de vídeo em apenas 30 minutos
         </motion.h1>
 
-        {/* PGV-style subheadline */}
+        {/* Green subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-lg md:text-xl font-bold text-highlight-green mb-4 uppercase tracking-wide"
+          className="text-lg md:text-2xl font-black text-primary uppercase tracking-wide mb-4"
         >
           TOTALMENTE AUTÔNOMA. NÃO ERRA. NÃO TE DEIXA NA MÃO.
         </motion.p>
@@ -119,8 +110,8 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base md:text-lg text-muted-foreground max-w-2xl mb-10"
         >
-          Não é um chat que te diz o que fazer. O EscalaxPro é uma plataforma de performance
-          que rastreia conversões, fornece dashboards e otimiza as campanhas por você.
+          Multiplique 50, 100, 200, 300 criativos por semana com um passo a passo
+          que segue a risca o que o <span className="text-foreground font-semibold">Meta Andromeda</span> exige.
         </motion.p>
 
         {/* Stat cards (OneClick style) */}
@@ -128,12 +119,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="grid grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl mb-10"
+          className="grid grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl mb-12"
         >
           {stats.map((stat, i) => (
             <div key={i} className="stat-card">
               <div className="text-3xl md:text-4xl font-black font-mono-title text-primary">{stat.value}</div>
-              <div className="text-xs md:text-sm font-bold tracking-wider mt-1">{stat.label}</div>
+              <div className="text-xs md:text-sm font-bold tracking-wider mt-1 text-foreground">{stat.label}</div>
               <div className="text-xs text-muted-foreground mt-0.5">{stat.sub}</div>
             </div>
           ))}
@@ -146,27 +137,27 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="w-full max-w-3xl mb-10"
         >
-          <div ref={containerRef} className="relative rounded-2xl overflow-hidden neon-pop-image aspect-video bg-background/50">
+          <div ref={containerRef} className="relative rounded-2xl overflow-hidden aspect-video bg-card border border-border shadow-lg">
             {isPlaying ? (
               <div id="yt-player" className="absolute inset-0 w-full h-full" />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center cursor-pointer group" onClick={handlePlay}>
                 <img src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`} alt="Preview do vídeo" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-background/40" />
-                <div className="relative z-10 w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 transition-transform">
+                <div className="absolute inset-0 bg-foreground/20" />
+                <div className="relative z-10 w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                   <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
                 </div>
               </div>
             )}
             {isPlaying && (
-              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-muted/40 z-20">
-                <div className="h-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.6)] transition-all duration-500 ease-linear" style={{ width: `${progress}%` }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-muted z-20">
+                <div className="h-full bg-primary transition-all duration-500 ease-linear" style={{ width: `${progress}%` }} />
               </div>
             )}
           </div>
         </motion.div>
 
-        {/* OneClick-style large CTA */}
+        {/* Large green CTA (OneClick style) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,14 +167,24 @@ const HeroSection = () => {
           <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
-              className="neon-btn text-primary-foreground text-lg md:text-xl px-12 py-8 rounded-2xl border-0 hover:scale-105 transition-all shadow-xl shadow-primary/30 uppercase font-bold tracking-wide"
+              className="bg-primary text-primary-foreground text-lg md:text-xl px-14 py-8 rounded-2xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 uppercase font-bold tracking-wide"
             >
               AGENDAR DEMONSTRAÇÃO AO VIVO
             </Button>
           </a>
-          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+          <p className="text-sm text-muted-foreground mt-3 flex items-center gap-1">
             ✅ Veja EscalaxPro monitorando campanhas em tempo real
           </p>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="mt-16"
+        >
+          <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
         </motion.div>
       </div>
     </section>

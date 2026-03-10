@@ -20,8 +20,6 @@ const TypingChat = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
-  const fullText = chatLines.join("\n");
-
   const reset = useCallback(() => {
     setDisplayedText("");
     setLineIndex(0);
@@ -43,7 +41,6 @@ const TypingChat = () => {
     const currentLine = chatLines[lineIndex];
 
     if (charIndex >= currentLine.length) {
-      // Move to next line after a small pause
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + "\n");
         setLineIndex((prev) => prev + 1);
@@ -64,29 +61,27 @@ const TypingChat = () => {
   const lines = displayedText.split("\n");
 
   return (
-    <div className="w-full max-w-[320px] mx-auto rounded-2xl overflow-hidden border border-primary/20 bg-[hsl(240,10%,4%)] shadow-2xl">
+    <div className="w-full max-w-[320px] mx-auto rounded-2xl overflow-hidden border border-border bg-background shadow-sm">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-primary/10 bg-primary/5">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-card">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center">
             <MessageCircle className="w-3.5 h-3.5 text-primary" />
           </div>
-          <span className="text-sm font-bold font-mono-title text-primary">RoteiroPRO IA</span>
+          <span className="text-sm font-bold text-primary">RoteiroPRO IA</span>
         </div>
       </div>
 
       {/* Chat body */}
       <div className="p-4 min-h-[320px] max-h-[380px] overflow-hidden">
-        {/* User bubble */}
         <div className="flex justify-end mb-3">
           <div className="bg-primary text-primary-foreground text-xs px-3 py-2 rounded-2xl rounded-tr-sm max-w-[80%]">
             oi
           </div>
         </div>
 
-        {/* AI bubble */}
         <div className="flex justify-start">
-          <div className="bg-muted/60 text-foreground text-xs px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed whitespace-pre-wrap">
+          <div className="bg-card text-foreground text-xs px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed whitespace-pre-wrap border border-border">
             {lines.map((line, i) => (
               <span key={i}>
                 {line}
@@ -106,7 +101,7 @@ const TypingChat = () => {
 
       {/* Input bar */}
       <div className="px-4 pb-4 pt-2">
-        <div className="flex items-center gap-2 bg-muted/30 rounded-full px-4 py-2.5 border border-border/50">
+        <div className="flex items-center gap-2 bg-card rounded-full px-4 py-2.5 border border-border">
           <span className="text-xs text-muted-foreground flex-1 flex items-center">
             Descreva seu vídeo...
             <motion.span

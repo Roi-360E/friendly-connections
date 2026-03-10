@@ -4,7 +4,7 @@ import screenshot6 from "@/assets/app-screenshot-6.png";
 
 const ShowcaseSection = () => {
   return (
-    <section className="py-24 relative grid-bg">
+    <section className="py-24 bg-card">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -12,10 +12,10 @@ const ShowcaseSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
+          <span className="text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
             Recursos Extras
           </span>
-          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-foreground">
             Tudo que você precisa para{" "}
             <span className="text-primary">escalar de verdade</span>
           </h2>
@@ -27,13 +27,13 @@ const ShowcaseSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
+            className="rounded-2xl p-6 flex flex-col items-center text-center bg-background border border-border"
           >
             <div className="mb-6 w-full">
               <TypingChat />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2 font-bold">DESTAQUE #1</span>
-            <h3 className="text-lg font-bold mb-2">Gerador de Roteiros com IA</h3>
+            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">DESTAQUE #1</span>
+            <h3 className="text-lg font-bold mb-2 text-foreground">Gerador de Roteiros com IA</h3>
             <p className="text-sm text-muted-foreground">
               Copywriter veterano com 50+ anos de experiência integrado para criar roteiros sob medida.
             </p>
@@ -44,13 +44,13 @@ const ShowcaseSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="glass-card rounded-2xl p-6 flex flex-col items-center text-center"
+            className="rounded-2xl p-6 flex flex-col items-center text-center bg-background border border-border"
           >
-            <div className="neon-pop-image mb-6 w-full">
+            <div className="rounded-xl overflow-hidden mb-6 w-full border border-border">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2 font-bold">DESTAQUE #2</span>
-            <h3 className="text-lg font-bold mb-2">Multiplicação em Massa</h3>
+            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">DESTAQUE #2</span>
+            <h3 className="text-lg font-bold mb-2 text-foreground">Multiplicação em Massa</h3>
             <p className="text-sm text-muted-foreground">
               10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para rodar.
             </p>

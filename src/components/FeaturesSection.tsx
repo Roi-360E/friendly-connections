@@ -31,7 +31,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-24 relative" id="funcionalidades">
+    <section className="py-24 bg-card" id="funcionalidades">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <span className="text-primary font-bold text-sm uppercase tracking-widest">Funcionalidades</span>
-          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-5 uppercase tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-5 uppercase tracking-tight text-foreground">
             Tudo que você precisa para{" "}
             <span className="text-primary">escalar criativos</span>
           </h2>
@@ -58,12 +58,12 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+              className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}

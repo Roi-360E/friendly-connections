@@ -2,18 +2,18 @@ import { Zap, Shield } from "lucide-react";
 
 const FooterSection = () => {
   return (
-    <footer className="border-t border-border/50 py-12">
+    <footer className="border-t border-border py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Zap className="w-5 h-5 text-primary" />
-            <span className="font-black font-mono-title uppercase">ESCALAX<span className="text-primary">PRO</span></span>
+            <span className="font-black uppercase text-foreground">ESCALAX<span className="text-primary">PRO</span></span>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Termos de Uso</a>
-            <a href="#" className="hover:text-primary transition-colors">Política de Privacidade</a>
-            <a href="#" className="hover:text-primary transition-colors">Suporte</a>
+            <a href="#" className="hover:text-foreground transition-colors">Termos de Uso</a>
+            <a href="#" className="hover:text-foreground transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-foreground transition-colors">Suporte</a>
           </div>
 
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
