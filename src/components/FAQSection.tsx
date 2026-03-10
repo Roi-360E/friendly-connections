@@ -13,7 +13,15 @@ const faqs = [
   },
   {
     question: "Quantos criativos consigo gerar?",
-    answer: "Depende de quantos vídeos você sobe. Com 10 ganchos, 5 corpos e 2 CTAs, por exemplo, você gera 100 criativos únicos em uma única leva. Tudo processado em menos de 1 minuto.",
+    answer: "Depende do seu plano. No plano Starter você gera até 50 criativos/mês, e no Pro e Agency os criativos são ilimitados. Com 10 ganchos, 5 corpos e 2 CTAs, por exemplo, você gera 100 criativos únicos em uma única leva.",
+  },
+  {
+    question: "O teste grátis é realmente gratuito?",
+    answer: "Sim! Você tem 7 dias completos para testar a plataforma sem precisar informar cartão de crédito. Se gostar, escolha um plano mensal. Se não gostar, é só não assinar — sem compromisso.",
+  },
+  {
+    question: "Posso mudar de plano ou cancelar a qualquer momento?",
+    answer: "Sim! Você pode fazer upgrade, downgrade ou cancelar seu plano mensal quando quiser, direto pelo app. Sem burocracia, sem multa.",
   },
   {
     question: "Funciona para qualquer nicho?",
@@ -24,8 +32,8 @@ const faqs = [
     answer: "Sim. Os criativos são exportados em formatos compatíveis com todas as plataformas: Facebook, Instagram, TikTok, YouTube e Google Ads.",
   },
   {
-    question: "É realmente gratuito?",
-    answer: "Sim! Você pode se cadastrar e usar a plataforma gratuitamente. Basta criar sua conta e começar a multiplicar seus criativos.",
+    question: "Qual a forma de pagamento?",
+    answer: "Aceitamos cartão de crédito, PIX e boleto bancário. O pagamento é recorrente mensal, e você pode cancelar quando quiser.",
   },
 ];
 
