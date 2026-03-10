@@ -11,7 +11,6 @@ const NavBar = () => {
 
   const links = [
     { label: "Funcionalidades", href: "#funcionalidades" },
-    { label: "Planos", href: "#planos" },
     { label: "FAQ", href: "#faq" },
   ];
 
