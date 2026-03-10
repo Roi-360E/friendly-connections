@@ -12,14 +12,12 @@ const ShowcaseSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
+          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
             Recursos Extras
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">
             Tudo que você precisa para{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              escalar de verdade
-            </span>
+            <span className="text-primary">escalar de verdade</span>
           </h2>
         </motion.div>
 
@@ -34,7 +32,7 @@ const ShowcaseSection = () => {
             <div className="mb-6 w-full">
               <TypingChat />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">DESTAQUE #1</span>
+            <span className="font-mono-title text-xs text-primary tracking-wider mb-2 font-bold">DESTAQUE #1</span>
             <h3 className="text-lg font-bold mb-2">Gerador de Roteiros com IA</h3>
             <p className="text-sm text-muted-foreground">
               Copywriter veterano com 50+ anos de experiência integrado para criar roteiros sob medida.
@@ -51,7 +49,7 @@ const ShowcaseSection = () => {
             <div className="neon-pop-image mb-6 w-full">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
             </div>
-            <span className="font-mono-title text-xs text-primary tracking-wider mb-2">DESTAQUE #2</span>
+            <span className="font-mono-title text-xs text-primary tracking-wider mb-2 font-bold">DESTAQUE #2</span>
             <h3 className="text-lg font-bold mb-2">Multiplicação em Massa</h3>
             <p className="text-sm text-muted-foreground">
               10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para rodar.

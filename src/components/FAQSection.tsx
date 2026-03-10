@@ -47,10 +47,10 @@ const FAQSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
+          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
             Dúvidas
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold">Perguntas Frequentes</h2>
+          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">Perguntas Frequentes</h2>
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
