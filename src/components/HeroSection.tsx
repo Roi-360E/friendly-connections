@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Play } from "lucide-react";
+import { ArrowRight, Zap, Play, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import screenshot1 from "@/assets/app-screenshot-1.png";
 
 const SIGNUP_URL = "https://deploysites.online/";
 const YOUTUBE_VIDEO_ID = "wYbHpveuQQs";
@@ -49,7 +48,6 @@ const HeroSection = () => {
   const handlePlay = async () => {
     setIsPlaying(true);
     await loadYTApi();
-    // small delay for DOM to render the div
     setTimeout(() => {
       playerRef.current = new (window as any).YT.Player("yt-player", {
         videoId: YOUTUBE_VIDEO_ID,
@@ -76,22 +74,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden grid-bg pt-28 pb-16">
-      {/* Gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-primary/15 blur-[150px]" />
         <div className="absolute -bottom-60 -left-40 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-        {/* Badge */}
+        {/* Top banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary text-xs font-mono-title mb-6"
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-2xl mb-6 py-3 px-6 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center gap-2"
         >
-          <Zap className="w-3 h-3" />
-          VÍDEOS PROCESSADOS EM MENOS DE 1 MINUTO
+          <Flame className="w-4 h-4 text-primary" />
+          <span className="text-sm font-semibold text-primary">
+            Teste grátis por 7 dias • Sem cartão de crédito
+          </span>
         </motion.div>
 
         {/* Headline */}
@@ -99,13 +98,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-10 max-w-4xl"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-4xl"
         >
-          Fature 10k multiplicando seus anúncios com a Inteligência do{" "}
+          Crie{" "}
           <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Escalax.
-          </span>
+            300 criativos de vídeo
+          </span>{" "}
+          em apenas 30 minutos.
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
+        >
+          Multiplique 50, 100, 200, 300 criativos por semana seguindo a lógica que o{" "}
+          <span className="text-foreground font-semibold">Meta Andromeda</span> exige para escalar.
+        </motion.p>
 
         {/* Video Player */}
         <motion.div
@@ -133,7 +143,6 @@ const HeroSection = () => {
                 </div>
               </div>
             )}
-            {/* Progress bar */}
             {isPlaying && (
               <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-muted/40 z-20">
                 <div
@@ -152,8 +161,8 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
         >
-          A ferramenta que transforma 1 roteiro em 100+ criativos validados.
-          Use a lógica de concatenação dos grandes players para escalar no Facebook e TikTok Ads sem esforço.
+          Escalar ficou mais fácil — é só ter variedade de criativos, com ângulos diferentes.
+          Chega de apostar tudo no seu "criativo campeão".
         </motion.p>
 
         {/* CTA */}
@@ -168,12 +177,12 @@ const HeroSection = () => {
               size="lg"
               className="neon-btn text-primary-foreground text-lg px-10 py-7 rounded-xl border-0 hover:scale-105 transition-all shadow-lg shadow-primary/25"
             >
-              CADASTRE-SE GRATUITAMENTE
+              TESTAR GRÁTIS POR 7 DIAS
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </a>
           <p className="text-xs text-muted-foreground mt-3">
-            🔒 Acesso imediato • 100% gratuito
+            🔒 Sem cartão de crédito • Cancele quando quiser
           </p>
         </motion.div>
       </div>
