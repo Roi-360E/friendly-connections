@@ -7,13 +7,13 @@ import {
 } from "@/components/ui/accordion";
 
 const faqs = [
-  { question: "O que é a lógica de Gancho + Corpo + CTA?", answer: "É a estrutura usada pelos maiores players de anúncios. O Gancho prende a atenção nos 3 primeiros segundos, o Corpo gera desejo com uma explicação lógica, e o CTA converte com uma chamada para ação. O Escalax combina todas as variações automaticamente." },
-  { question: "Quantos criativos consigo gerar?", answer: "Depende do seu plano. No plano Starter você gera até 50 criativos/mês, e no Pro e Agency os criativos são ilimitados. Com 10 ganchos, 5 corpos e 2 CTAs, por exemplo, você gera 100 criativos únicos em uma única leva." },
-  { question: "O teste grátis é realmente gratuito?", answer: "Sim! Você tem 7 dias completos para testar a plataforma sem precisar informar cartão de crédito. Se gostar, escolha um plano mensal. Se não gostar, é só não assinar — sem compromisso." },
-  { question: "Posso mudar de plano ou cancelar a qualquer momento?", answer: "Sim! Você pode fazer upgrade, downgrade ou cancelar seu plano mensal quando quiser, direto pelo app. Sem burocracia, sem multa." },
-  { question: "Funciona para qualquer nicho?", answer: "Sim! A lógica de concatenação funciona para qualquer vertical: e-commerce, infoprodutos, serviços locais, apps, SaaS e mais." },
+  { question: "O que exatamente eu recebo ao comprar?", answer: "Você recebe acesso completo ao aplicativo EscalaxPro, onde você pode criar centenas de criativos de vídeo usando a lógica de Gancho + Corpo + CTA. Dependendo do plano, seus créditos podem ser ilimitados e o acesso vitalício." },
+  { question: "Preciso saber editar vídeo?", answer: "Não! O app faz todo o trabalho pesado por você. Você só precisa selecionar seus ganchos, corpos e CTAs, e o sistema concatena tudo automaticamente gerando dezenas de variações prontas para rodar." },
+  { question: "Quantos criativos consigo gerar por semana?", answer: "Com a lógica de multiplicação, você pode gerar facilmente 50, 100, 200 ou até 300 criativos por semana. Com 10 ganchos × 5 corpos × 2 CTAs você já tem 100 variações únicas em uma única leva." },
+  { question: "Funciona para qualquer nicho?", answer: "Sim! A lógica de concatenação funciona para qualquer vertical: e-commerce, infoprodutos, serviços locais, apps, SaaS e mais. Se você roda tráfego, funciona pra você." },
   { question: "Funciona no Facebook e TikTok Ads?", answer: "Sim. Os criativos são exportados em formatos compatíveis com todas as plataformas: Facebook, Instagram, TikTok, YouTube e Google Ads." },
-  { question: "Qual a forma de pagamento?", answer: "Aceitamos cartão de crédito, PIX e boleto bancário. O pagamento é recorrente mensal, e você pode cancelar quando quiser." },
+  { question: "Tem garantia?", answer: "Sim! Garantia incondicional de 7 dias. Se você não gostar ou achar que não é pra você, é só pedir o reembolso e devolvemos 100% do seu dinheiro. Sem perguntas." },
+  { question: "Qual a forma de pagamento?", answer: "Aceitamos cartão de crédito (até 12x), PIX e boleto bancário. O acesso é liberado imediatamente após a confirmação do pagamento." },
 ];
 
 const FAQSection = () => {

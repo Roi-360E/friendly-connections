@@ -24,23 +24,24 @@ const AuthoritySection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
-              Built by a Dev
+              Quem criou isso
             </span>
             <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight uppercase tracking-tight text-foreground">
-              Desenvolvido por quem entende{" "}
-              <span className="text-primary">o código por trás do lucro.</span>
+              Desenvolvido por quem{" "}
+              <span className="text-primary">escala de verdade.</span>
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               São 10 anos de experiência em tecnologia condensados em uma ferramenta que resolve
-              a falta de criativos para quem escala sério. Cada linha de código foi pensada
-              para performance e resultado.
+              o maior gargalo de quem roda tráfego:{" "}
+              <span className="text-foreground font-semibold">a falta de criativos novos toda semana.</span>{" "}
+              Cada funcionalidade foi pensada para quem precisa de volume com qualidade.
             </p>
 
             <div className="flex flex-col gap-4">
               {[
                 { icon: Code, text: "Tecnologia proprietária de concatenação de vídeos" },
-                { icon: TrendingUp, text: "Testado por media buyers que faturam 6 dígitos" },
-                { icon: Shield, text: "Infraestrutura robusta e processamento em nuvem" },
+                { icon: TrendingUp, text: "Usado por media buyers que faturam 6 e 7 dígitos/mês" },
+                { icon: Shield, text: "Processamento em nuvem — funciona 24h sem travar" },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">

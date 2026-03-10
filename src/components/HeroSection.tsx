@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, ChevronDown } from "lucide-react";
+import { ArrowRight, Play, ChevronDown, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SIGNUP_URL = "https://deploysites.online/";
@@ -21,12 +21,6 @@ const loadYTApi = (() => {
     return promise;
   };
 })();
-
-const stats = [
-  { value: "24", label: "HORAS", sub: "Nunca para" },
-  { value: "+3", label: "MILHÕES", sub: "de linhas de código" },
-  { value: "20", label: "MIL", sub: "campanhas otimizadas" },
-];
 
 const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -71,64 +65,44 @@ const HeroSection = () => {
   return (
     <section className="relative pt-28 pb-20">
       <div className="container mx-auto px-6 flex flex-col items-center text-center">
-        {/* OneClick-style pill badge */}
+        {/* Urgency banner */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 py-2.5 px-6 rounded-full border border-border bg-card inline-flex items-center gap-2"
+          className="mb-8 py-2.5 px-6 rounded-full border border-primary bg-primary/10 inline-flex items-center gap-2"
         >
-          <span className="w-2 h-2 rounded-full bg-primary" />
-          <span className="text-sm font-medium text-muted-foreground">
-            A tecnologia que já otimizou 20.642 campanhas dos maiores players do mercado
+          <Flame className="w-4 h-4 text-primary" />
+          <span className="text-sm font-bold text-primary uppercase">
+            🔥 Acesso Vitalício + Créditos ILIMITADOS
           </span>
         </motion.div>
 
-        {/* Bold uppercase headline */}
+        {/* Main headline - Samuel style */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-5 max-w-5xl uppercase tracking-tight text-foreground"
         >
-          Crie 300 criativos de vídeo em apenas 30 minutos
+          Receba Agora o aplicativo para criar{" "}
+          <span className="text-primary">
+            300 criativos de vídeos em apenas 30 minutos.
+          </span>
         </motion.h1>
 
-        {/* Green subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-lg md:text-2xl font-black text-primary uppercase tracking-wide mb-4"
-        >
-          TOTALMENTE AUTÔNOMA. NÃO ERRA. NÃO TE DEIXA NA MÃO.
-        </motion.p>
-
+        {/* Sub-headline - Samuel style */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-10"
+          className="text-base md:text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed"
         >
-          Multiplique 50, 100, 200, 300 criativos por semana com um passo a passo
-          que segue a risca o que o <span className="text-foreground font-semibold">Meta Andromeda</span> exige.
+          Você vai multiplicar{" "}
+          <span className="text-foreground font-bold">50, 100, 200, 300 criativos por semana</span>{" "}
+          com um passo a passo que segue a risca o que o{" "}
+          <span className="text-foreground font-bold">Meta Andromeda</span> exige.
         </motion.p>
-
-        {/* Stat cards (OneClick style) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="grid grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl mb-12"
-        >
-          {stats.map((stat, i) => (
-            <div key={i} className="stat-card">
-              <div className="text-3xl md:text-4xl font-black font-mono-title text-primary">{stat.value}</div>
-              <div className="text-xs md:text-sm font-bold tracking-wider mt-1 text-foreground">{stat.label}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">{stat.sub}</div>
-            </div>
-          ))}
-        </motion.div>
 
         {/* Video Player */}
         <motion.div
@@ -157,7 +131,18 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Large green CTA (OneClick style) */}
+        {/* Scarcity text */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+        >
+          Escalar ficou mais fácil — é só ter variedade de criativos, com ângulos diferentes.{" "}
+          <span className="text-foreground font-semibold">Chega de apostar tudo no seu "criativo campeão".</span>
+        </motion.p>
+
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,21 +154,16 @@ const HeroSection = () => {
               size="lg"
               className="bg-primary text-primary-foreground text-lg md:text-xl px-14 py-8 rounded-2xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 uppercase font-bold tracking-wide"
             >
-              AGENDAR DEMONSTRAÇÃO AO VIVO
+              QUERO MEU ACESSO VITALÍCIO
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </a>
-          <p className="text-sm text-muted-foreground mt-3 flex items-center gap-1">
-            ✅ Veja EscalaxPro monitorando campanhas em tempo real
+          <p className="text-sm text-muted-foreground mt-3">
+            🔒 Acesso imediato • Créditos ilimitados • Garantia de 7 dias
           </p>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="mt-16"
-        >
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="mt-16">
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
         </motion.div>
       </div>
