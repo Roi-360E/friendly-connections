@@ -4,21 +4,17 @@ import screenshot7 from "@/assets/app-screenshot-7.png";
 
 const AuthoritySection = () => {
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[150px]" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24">
+      <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="neon-pop-image"
+            className="rounded-2xl overflow-hidden border border-border shadow-lg"
           >
-            <img src={screenshot7} alt="Escalax em ação - preview de criativos" className="w-full" />
+            <img src={screenshot7} alt="Escalax em ação" className="w-full" />
           </motion.div>
 
           <motion.div
@@ -27,14 +23,12 @@ const AuthoritySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
+            <span className="text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
               Built by a Dev
             </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight uppercase tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight uppercase tracking-tight text-foreground">
               Desenvolvido por quem entende{" "}
-              <span className="text-primary">
-                o código por trás do lucro.
-              </span>
+              <span className="text-primary">o código por trás do lucro.</span>
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               São 10 anos de experiência em tecnologia condensados em uma ferramenta que resolve
@@ -52,7 +46,7 @@ const AuthoritySection = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm font-medium">{item.text}</span>
+                  <span className="text-sm font-medium text-foreground">{item.text}</span>
                 </div>
               ))}
             </div>
