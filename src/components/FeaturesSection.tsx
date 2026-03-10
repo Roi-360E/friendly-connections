@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Layers, Brain, BarChart3, Repeat, Zap, Shield } from "lucide-react";
+import { Layers, Brain, BarChart3, Repeat, Shield } from "lucide-react";
 
 const features = [
   {
@@ -40,10 +40,10 @@ const FeaturesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Funcionalidades</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-5">
+          <span className="text-primary font-bold text-sm uppercase tracking-widest">Funcionalidades</span>
+          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-5 uppercase tracking-tight">
             Tudo que você precisa para{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">escalar criativos</span>
+            <span className="text-primary">escalar criativos</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Ferramentas poderosas para criar, testar e otimizar seus anúncios em escala.

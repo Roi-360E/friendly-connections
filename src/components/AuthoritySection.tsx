@@ -6,7 +6,7 @@ const AuthoritySection = () => {
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[150px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -27,12 +27,12 @@ const AuthoritySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
+            <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
               Built by a Dev
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight uppercase tracking-tight">
               Desenvolvido por quem entende{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="text-primary">
                 o código por trás do lucro.
               </span>
             </h2>
@@ -52,7 +52,7 @@ const AuthoritySection = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm">{item.text}</span>
+                  <span className="text-sm font-medium">{item.text}</span>
                 </div>
               ))}
             </div>

@@ -68,14 +68,12 @@ const PricingSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block">
+          <span className="font-mono-title text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
             Planos
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">
             Escale seus criativos com o{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              plano certo para você.
-            </span>
+            <span className="text-primary">plano certo para você.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Teste grátis por 7 dias. Sem cartão de crédito. Cancele quando quiser.
@@ -97,22 +95,22 @@ const PricingSection = () => {
               }`}
             >
               {plan.highlight && (
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
               )}
               {plan.badge && (
-                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold">
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold uppercase">
                   {plan.badge}
                 </div>
               )}
 
               <div className="flex items-center gap-2 mb-4">
                 <plan.icon className="w-5 h-5 text-primary" />
-                <span className="font-mono-title text-sm text-primary font-semibold">{plan.name}</span>
+                <span className="font-mono-title text-sm text-primary font-bold uppercase">{plan.name}</span>
               </div>
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  <span className="text-5xl font-black text-primary">
                     R$ {plan.price}
                   </span>
                   <span className="text-muted-foreground text-sm">{plan.period}</span>
@@ -131,7 +129,7 @@ const PricingSection = () => {
               <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
-                  className={`w-full text-lg py-6 rounded-xl border-0 hover:scale-105 transition-all ${
+                  className={`w-full text-lg py-6 rounded-xl border-0 hover:scale-105 transition-all font-bold uppercase ${
                     plan.highlight
                       ? "neon-btn text-primary-foreground shadow-lg shadow-primary/25"
                       : "bg-card border border-border text-foreground hover:border-primary/40"

@@ -7,7 +7,7 @@ const FooterSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Zap className="w-5 h-5 text-primary" />
-            <span className="font-bold font-mono-title">ESCALAX</span>
+            <span className="font-black font-mono-title uppercase">ESCALAX<span className="text-primary">PRO</span></span>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -23,7 +23,7 @@ const FooterSection = () => {
         </div>
 
         <div className="text-center mt-8 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Escalax. Todos os direitos reservados.
+          © {new Date().getFullYear()} EscalaxPro. Todos os direitos reservados.
         </div>
       </div>
     </footer>
