@@ -39,7 +39,7 @@ const NavBar = () => {
           ))}
           <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
             <Button size="sm" className="neon-btn text-primary-foreground border-0 hover:scale-105 transition-transform">
-              CADASTRE-SE GRÁTIS
+              TESTAR GRÁTIS
             </Button>
           </a>
         </div>
