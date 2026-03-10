@@ -27,7 +27,7 @@ const plans = [
     highlight: true,
     badge: "MAIS POPULAR",
     features: [
-      "Criativos ilimitados",
+      "Criativos ILIMITADOS",
       "Lógica Gancho + Corpo + CTA",
       "IA integrada para roteiros",
       "Exportação em massa (HD/4K)",
@@ -38,18 +38,19 @@ const plans = [
     ],
   },
   {
-    name: "Agency",
+    name: "Vitalício",
     icon: Flame,
-    price: "197",
-    period: "/mês",
+    price: "497",
+    period: "único",
     highlight: false,
+    badge: "MELHOR CUSTO",
     features: [
-      "Tudo do Pro +",
-      "Multi-contas (até 10 marcas)",
-      "API de integração",
-      "Relatórios white-label",
-      "Onboarding dedicado",
+      "Tudo do Pro para sempre",
+      "Créditos ILIMITADOS",
+      "Sem mensalidade nunca mais",
+      "Acesso a todas as atualizações",
       "Suporte VIP via WhatsApp",
+      "Onboarding dedicado",
     ],
   },
 ];
@@ -68,11 +69,11 @@ const PricingSection = () => {
             Planos
           </span>
           <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-foreground">
-            Escale seus criativos com o{" "}
-            <span className="text-primary">plano certo para você.</span>
+            Escolha como você quer{" "}
+            <span className="text-primary">escalar seus criativos.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Teste grátis por 7 dias. Sem cartão de crédito. Cancele quando quiser.
+            Garantia incondicional de 7 dias. Não gostou? Devolvemos 100% do seu dinheiro.
           </p>
         </motion.div>
 
@@ -129,7 +130,7 @@ const PricingSection = () => {
                       : "bg-card border border-border text-foreground hover:border-primary/40"
                   }`}
                 >
-                  COMEÇAR TESTE GRÁTIS
+                  QUERO ESSE PLANO
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
@@ -139,7 +140,7 @@ const PricingSection = () => {
 
         <div className="flex items-center justify-center gap-2 mt-8">
           <Shield className="w-4 h-4 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground">7 dias grátis • Cancele a qualquer momento • Sem compromisso</span>
+          <span className="text-sm text-muted-foreground">Garantia de 7 dias • Cancele quando quiser • Pagamento seguro</span>
         </div>
       </div>
     </section>

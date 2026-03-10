@@ -5,27 +5,27 @@ const features = [
   {
     icon: Layers,
     title: "Estrutura Gancho + Corpo + CTA",
-    description: "Monte criativos seguindo a fórmula comprovada: capture atenção, entregue valor e converta com CTAs poderosos.",
+    description: "Monte criativos seguindo a fórmula que o Meta Andromeda exige: capture atenção, entregue valor e converta com CTAs poderosos.",
   },
   {
     icon: Brain,
-    title: "Geração com IA",
-    description: "Inteligência artificial que sugere variações de copy, headlines e CTAs otimizados para sua audiência.",
+    title: "Roteirista IA Integrado",
+    description: "Copywriter com lógica de Erico Rocha, Ladeirinha e Hana embutido. Gere roteiros de alto impacto em segundos.",
   },
   {
     icon: Repeat,
-    title: "Produção em Massa",
-    description: "Gere dezenas de combinações de criativos em poucos cliques. Teste mais, descubra o que converte.",
+    title: "Multiplicação em Massa",
+    description: "10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos. Produza em escala sem equipe de edição.",
   },
   {
     icon: BarChart3,
-    title: "Analytics de Performance",
-    description: "Acompanhe quais ganchos, corpos e CTAs performam melhor e otimize suas campanhas.",
+    title: "Descubra o que Converte",
+    description: "Teste centenas de variações e encontre os criativos vencedores antes de investir pesado em mídia paga.",
   },
   {
     icon: Shield,
-    title: "Segurança e Confiabilidade",
-    description: "Infraestrutura robusta em nuvem com processamento seguro para todos os seus criativos.",
+    title: "Processamento em Nuvem",
+    description: "Seus vídeos são processados na nuvem. Não trava, não depende do seu computador, funciona 24h por dia.",
   },
 ];
 
@@ -40,13 +40,13 @@ const FeaturesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-bold text-sm uppercase tracking-widest">Funcionalidades</span>
+          <span className="text-primary font-bold text-sm uppercase tracking-widest">O que você recebe</span>
           <h2 className="text-4xl md:text-5xl font-black mt-3 mb-5 uppercase tracking-tight text-foreground">
-            Tudo que você precisa para{" "}
-            <span className="text-primary">escalar criativos</span>
+            A máquina de criativos que vai{" "}
+            <span className="text-primary">escalar suas campanhas</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ferramentas poderosas para criar, testar e otimizar seus anúncios em escala.
+            Tudo que media buyers de 6 e 7 dígitos usam para nunca ficar sem criativos novos.
           </p>
         </motion.div>
 

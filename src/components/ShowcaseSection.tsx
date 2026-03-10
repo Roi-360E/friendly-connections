@@ -13,11 +13,11 @@ const ShowcaseSection = () => {
           className="text-center mb-16"
         >
           <span className="text-xs text-primary tracking-widest uppercase mb-4 block font-bold">
-            Recursos Extras
+            Por dentro do app
           </span>
           <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-foreground">
-            Tudo que você precisa para{" "}
-            <span className="text-primary">escalar de verdade</span>
+            Veja o que você vai ter{" "}
+            <span className="text-primary">nas suas mãos</span>
           </h2>
         </motion.div>
 
@@ -32,10 +32,10 @@ const ShowcaseSection = () => {
             <div className="mb-6 w-full">
               <TypingChat />
             </div>
-            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">DESTAQUE #1</span>
-            <h3 className="text-lg font-bold mb-2 text-foreground">Gerador de Roteiros com IA</h3>
+            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">BÔNUS INCLUSO</span>
+            <h3 className="text-lg font-bold mb-2 text-foreground">Roteirista IA Integrado</h3>
             <p className="text-sm text-muted-foreground">
-              Copywriter veterano com 50+ anos de experiência integrado para criar roteiros sob medida.
+              Gere roteiros de alto impacto com IA treinada nas metodologias de Erico Rocha, Ladeirinha e Hana.
             </p>
           </motion.div>
 
@@ -49,10 +49,10 @@ const ShowcaseSection = () => {
             <div className="rounded-xl overflow-hidden mb-6 w-full border border-border">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
             </div>
-            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">DESTAQUE #2</span>
+            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">FUNCIONALIDADE PRINCIPAL</span>
             <h3 className="text-lg font-bold mb-2 text-foreground">Multiplicação em Massa</h3>
             <p className="text-sm text-muted-foreground">
-              10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para rodar.
+              10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para subir nas campanhas.
             </p>
           </motion.div>
         </div>
