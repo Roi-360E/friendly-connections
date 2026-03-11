@@ -63,27 +63,27 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-28 pb-20">
-      <div className="container mx-auto px-6 flex flex-col items-center text-center">
+    <section className="relative pt-20 pb-12 md:pt-28 md:pb-20">
+      <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center">
         {/* Urgency banner */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 py-2.5 px-6 rounded-full border border-primary bg-primary/10 inline-flex items-center gap-2"
+          className="mb-5 md:mb-8 py-2 px-4 md:py-2.5 md:px-6 rounded-full border border-primary bg-primary/10 inline-flex items-center gap-2"
         >
-          <Flame className="w-4 h-4 text-primary" />
-          <span className="text-sm font-bold text-primary uppercase">
+          <Flame className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+          <span className="text-xs md:text-sm font-bold text-primary uppercase">
             🔥 Créditos ILIMITADOS
           </span>
         </motion.div>
 
-        {/* Main headline - Samuel style */}
+        {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-5 max-w-5xl uppercase tracking-tight text-foreground"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] mb-4 md:mb-5 max-w-5xl uppercase tracking-tight text-foreground"
         >
           Receba Agora o aplicativo para criar{" "}
           <span className="text-primary">
@@ -91,12 +91,12 @@ const HeroSection = () => {
           </span>
         </motion.h1>
 
-        {/* Sub-headline - Samuel style */}
+        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed"
+          className="text-sm md:text-xl text-muted-foreground max-w-3xl mb-6 md:mb-10 leading-relaxed px-2"
         >
           Você vai multiplicar{" "}
           <span className="text-foreground font-bold">50, 100, 200, 300 criativos por semana</span>{" "}
@@ -109,22 +109,22 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="w-full max-w-3xl mb-10"
+          className="w-full max-w-3xl mb-6 md:mb-10"
         >
-          <div ref={containerRef} className="relative rounded-2xl overflow-hidden aspect-video bg-card border border-border shadow-lg">
+          <div ref={containerRef} className="relative rounded-xl md:rounded-2xl overflow-hidden aspect-video bg-card border border-border shadow-lg">
             {isPlaying ? (
               <div id="yt-player" className="absolute inset-0 w-full h-full" />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center cursor-pointer group" onClick={handlePlay}>
                 <img src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`} alt="Preview do vídeo" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-foreground/20" />
-                <div className="relative z-10 w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+                <div className="relative z-10 w-14 h-14 md:w-20 md:h-20 rounded-full bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground ml-0.5" fill="currentColor" />
                 </div>
               </div>
             )}
             {isPlaying && (
-              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-muted z-20">
+              <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-muted z-20">
                 <div className="h-full bg-primary transition-all duration-500 ease-linear" style={{ width: `${progress}%` }} />
               </div>
             )}
@@ -136,7 +136,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+          className="text-sm md:text-lg text-muted-foreground max-w-2xl mb-6 md:mb-8 leading-relaxed px-2"
         >
           Escalar ficou mais fácil — é só ter variedade de criativos, com ângulos diferentes.{" "}
           <span className="text-foreground font-semibold">Chega de apostar tudo no seu "criativo campeão".</span>
@@ -147,24 +147,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
         >
-          <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+          <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground text-lg md:text-xl px-14 py-8 rounded-2xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 uppercase font-bold tracking-wide"
+              className="w-full sm:w-auto bg-primary text-primary-foreground text-base md:text-xl px-8 md:px-14 py-6 md:py-8 rounded-xl md:rounded-2xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 uppercase font-bold tracking-wide"
             >
               TESTE POR 7 DIAS
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </a>
-          <p className="text-sm text-muted-foreground mt-3">
+          <p className="text-xs md:text-sm text-muted-foreground mt-3">
             🔒 Acesso imediato • Créditos ilimitados • Garantia de 7 dias
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="mt-16">
-          <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="mt-10 md:mt-16">
+          <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground animate-bounce" />
         </motion.div>
       </div>
     </section>
