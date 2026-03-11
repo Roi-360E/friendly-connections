@@ -4,18 +4,19 @@ import screenshot6 from "@/assets/app-screenshot-6.png";
 
 const ShowcaseSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-card">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-16 md:py-24 hero-gradient relative overflow-hidden">
+      <div className="absolute inset-0 grid-pattern" />
+      <div className="container relative mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-bold">
+          <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-semibold">
             Por dentro do app
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-3 md:mb-4 uppercase tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-3 md:mb-4 tracking-tight text-foreground">
             Veja o que você vai ter{" "}
             <span className="text-primary">nas suas mãos</span>
           </h2>
@@ -32,7 +33,7 @@ const ShowcaseSection = () => {
             <div className="mb-4 md:mb-6 w-full">
               <TypingChat />
             </div>
-            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">BÔNUS INCLUSO</span>
+            <span className="text-xs text-primary tracking-wider mb-2 font-semibold uppercase">BÔNUS INCLUSO</span>
             <h3 className="text-base md:text-lg font-bold mb-2 text-foreground">Roteirista IA Integrado</h3>
             <p className="text-xs md:text-sm text-muted-foreground">
               Gere roteiros de alto impacto com IA treinada nas metodologias de Erico Rocha, Ladeirinha e Hana.
@@ -49,7 +50,7 @@ const ShowcaseSection = () => {
             <div className="rounded-lg md:rounded-xl overflow-hidden mb-4 md:mb-6 w-full border border-border">
               <img src={screenshot6} alt="100 criativos gerados automaticamente" className="w-full" />
             </div>
-            <span className="text-xs text-primary tracking-wider mb-2 font-bold uppercase">FUNCIONALIDADE PRINCIPAL</span>
+            <span className="text-xs text-primary tracking-wider mb-2 font-semibold uppercase">FUNCIONALIDADE PRINCIPAL</span>
             <h3 className="text-base md:text-lg font-bold mb-2 text-foreground">Multiplicação em Massa</h3>
             <p className="text-xs md:text-sm text-muted-foreground">
               10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para subir nas campanhas.

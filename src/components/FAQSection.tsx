@@ -18,18 +18,19 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-16 md:py-24 bg-card">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="faq" className="py-16 md:py-24 hero-gradient relative overflow-hidden">
+      <div className="absolute inset-0 grid-pattern" />
+      <div className="container relative mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-8 md:mb-12"
         >
-          <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-bold">
+          <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-semibold">
             Dúvidas
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">Perguntas Frequentes</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground">Perguntas Frequentes</h2>
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
