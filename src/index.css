@@ -7,22 +7,23 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    --foreground: 220 20% 10%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 7%;
+    --card: 210 20% 98%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 220 20% 10%;
 
     --primary: 152 76% 42%;
     --primary-foreground: 0 0% 100%;
+    --primary-glow: 152 80% 55%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 210 25% 96%;
+    --secondary-foreground: 220 20% 10%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 10% 46%;
 
     --accent: 152 76% 42%;
     --accent-foreground: 0 0% 100%;
@@ -30,20 +31,24 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 152 76% 42%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 7%;
+    --sidebar-foreground: 220 20% 10%;
     --sidebar-primary: 152 76% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 7%;
-    --sidebar-border: 0 0% 90%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 13% 91%;
     --sidebar-ring: 152 76% 42%;
+
+    --gradient-hero: linear-gradient(180deg, hsl(210 25% 96%) 0%, hsl(0 0% 100%) 100%);
+    --shadow-soft: 0 4px 24px -4px hsl(220 20% 10% / 0.06);
+    --shadow-primary: 0 8px 30px -8px hsl(152 76% 42% / 0.25);
   }
 }
 
@@ -55,6 +60,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -67,6 +74,20 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Hero gradient background */
+.hero-gradient {
+  background: var(--gradient-hero);
+}
+
+/* Subtle grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.03;
+}
+
 /* Stat card */
 .stat-card {
   border: 1px solid hsl(var(--border));
@@ -75,9 +96,16 @@
   text-align: center;
   background: hsl(var(--card));
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
 }
 
 .stat-card:hover {
   border-color: hsl(var(--primary) / 0.4);
-  box-shadow: 0 4px 20px hsl(var(--primary) / 0.08);
+  box-shadow: var(--shadow-primary);
+  transform: translateY(-2px);
+}
+
+/* Soft glow for primary elements */
+.glow-primary {
+  box-shadow: var(--shadow-primary);
 }

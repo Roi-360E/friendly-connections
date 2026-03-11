@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
-import { Code, TrendingUp, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import screenshot7 from "@/assets/app-screenshot-7.png";
+
+const SIGNUP_URL = "https://deploysites.online/";
+
+const stats = [
+  { value: "10+", label: "Anos de experiência" },
+  { value: "300+", label: "Criativos por semana" },
+  { value: "24h", label: "Processamento em nuvem" },
+];
 
 const AuthoritySection = () => {
   return (
@@ -24,10 +33,10 @@ const AuthoritySection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="order-1 lg:order-2"
           >
-            <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-bold">
+            <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-semibold">
               Quem criou isso
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 leading-tight uppercase tracking-tight text-foreground">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 leading-tight tracking-tight text-foreground">
               Desenvolvido por quem{" "}
               <span className="text-primary">escala de verdade.</span>
             </h2>
@@ -38,20 +47,22 @@ const AuthoritySection = () => {
               Cada funcionalidade foi pensada para quem precisa de volume com qualidade.
             </p>
 
-            <div className="flex flex-col gap-3 md:gap-4">
-              {[
-                { icon: Code, text: "Tecnologia proprietária de concatenação de vídeos" },
-                { icon: TrendingUp, text: "Usado por media buyers que faturam 6 e 7 dígitos/mês" },
-                { icon: Shield, text: "Processamento em nuvem — funciona 24h sem travar" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-foreground">{item.text}</span>
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-3 mb-8">
+              {stats.map((stat) => (
+                <div key={stat.label} className="stat-card">
+                  <div className="text-xl md:text-2xl font-black text-primary">{stat.value}</div>
+                  <div className="text-[10px] md:text-xs text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
+
+            <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold glow-primary">
+                Quero começar agora
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
