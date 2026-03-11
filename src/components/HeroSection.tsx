@@ -74,7 +74,7 @@ const HeroSection = () => {
         >
           <Flame className="w-4 h-4 text-primary" />
           <span className="text-sm font-bold text-primary uppercase">
-            🔥 Acesso Vitalício + Créditos ILIMITADOS
+            🔥 Créditos ILIMITADOS
           </span>
         </motion.div>
 
