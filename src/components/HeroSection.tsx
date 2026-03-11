@@ -154,7 +154,7 @@ const HeroSection = () => {
               size="lg"
               className="bg-primary text-primary-foreground text-lg md:text-xl px-14 py-8 rounded-2xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 uppercase font-bold tracking-wide"
             >
-              QUERO MEU ACESSO VITALÍCIO
+              TESTE POR 7 DIAS
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </a>
