@@ -7,6 +7,7 @@ const testimonials = [
   { src: "/videos/testimonial-2.mp4", name: "Cliente 2" },
   { src: "/videos/testimonial-3.mp4", name: "Cliente 3" },
   { src: "/videos/testimonial-4.mp4", name: "Cliente 4" },
+  { src: "/videos/hero-video.mp4", name: "Cliente 5" },
 ];
 
 const VideoCard = ({ src }: { src: string }) => {
