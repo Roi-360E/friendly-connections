@@ -74,6 +74,7 @@ const plans = [
     price: "197,00",
     period: "/mês",
     highlight: true,
+    url: "https://deploysites.online/cadastro/unlimited",
     badge: "Popular",
     features: [
       "Tokens ilimitados",
