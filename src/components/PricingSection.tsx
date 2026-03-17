@@ -42,6 +42,7 @@ const plans = [
     price: "67,90",
     period: "/mês",
     highlight: false,
+    url: "https://deploysites.online/cadastro/advanced",
     badge: "Popular",
     features: [
       "750 tokens/mês",
