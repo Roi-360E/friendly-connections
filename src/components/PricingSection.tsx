@@ -12,6 +12,7 @@ const plans = [
     price: "37,90",
     period: "/mês",
     highlight: false,
+    url: "https://deploysites.online/cadastro/planointermediario",
     badge: "Popular",
     features: [
       "Chat RoteiroPRÓ I.A",
