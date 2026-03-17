@@ -176,7 +176,7 @@ const PlanCard = ({ plan, index }: PlanCardProps) => (
       ))}
     </div>
 
-    <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+    <a href={plan.url || DEFAULT_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
       <Button
         size="lg"
         className={`w-full text-lg py-6 rounded-xl hover:scale-[1.02] transition-all font-bold ${
