@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Shield, Zap, Crown, Flame, Star, Infinity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SIGNUP_URL = "https://deploysites.online/";
+const DEFAULT_SIGNUP_URL = "https://deploysites.online/";
 
 const plans = [
   {
