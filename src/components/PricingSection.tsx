@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Shield, Zap, Crown, Flame, Star, Infinity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SIGNUP_URL = "https://deploysites.online/";
+const DEFAULT_SIGNUP_URL = "https://deploysites.online/";
 
 const plans = [
   {
@@ -12,6 +12,7 @@ const plans = [
     price: "37,90",
     period: "/mês",
     highlight: false,
+    url: "https://deploysites.online/cadastro/planointermediario",
     badge: "Popular",
     features: [
       "Chat RoteiroPRÓ I.A",
@@ -175,7 +176,7 @@ const PlanCard = ({ plan, index }: PlanCardProps) => (
       ))}
     </div>
 
-    <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+    <a href={plan.url || DEFAULT_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
       <Button
         size="lg"
         className={`w-full text-lg py-6 rounded-xl hover:scale-[1.02] transition-all font-bold ${
