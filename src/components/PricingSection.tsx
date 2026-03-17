@@ -58,6 +58,7 @@ const plans = [
     price: "87,90",
     period: "/mês",
     highlight: false,
+    url: "https://deploysites.online/cadastro/premium",
     badge: "Popular",
     features: [
       "1200 tokens/mês",
