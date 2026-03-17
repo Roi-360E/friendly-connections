@@ -98,7 +98,7 @@ const HeroSection = () => {
                   size="lg"
                   className="w-full sm:w-auto bg-primary text-primary-foreground text-sm md:text-base px-8 md:px-10 py-5 md:py-6 rounded-xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all glow-primary font-bold tracking-wide"
                 >
-                  LOGIN
+                  ENTRAR AGORA
                   <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </a>
