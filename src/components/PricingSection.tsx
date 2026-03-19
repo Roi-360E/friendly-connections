@@ -53,7 +53,7 @@ const plans = [
   },
   {
     name: "Premium",
-    tokens: "850 tokens",
+    tokens: "150 tokens",
     icon: Crown,
     price: "87,90",
     period: "/mês",
@@ -61,7 +61,7 @@ const plans = [
     url: "https://deploysites.online/cadastro/premium",
     badge: "Popular",
     features: [
-      "1200 tokens/mês",
+      "150 tokens/mês",
       "Processamento em nuvem",
       "Suporte prioritário",
       "Legendas com IA",
@@ -178,6 +178,10 @@ const PlanCard = ({ plan, index }: PlanCardProps) => (
           <span className="text-sm text-foreground">{feature}</span>
         </div>
       ))}
+      <div className="flex items-start gap-3 mt-4 pt-4 border-t border-border/50">
+        <Zap className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+        <span className="text-sm font-semibold text-primary">1 token = 1 vídeo gerado</span>
+      </div>
     </div>
 
     <a href={plan.url || DEFAULT_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
