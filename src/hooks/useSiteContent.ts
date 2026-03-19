@@ -149,8 +149,20 @@ export function useSiteContent() {
         .eq("key", "landing_page_content")
         .single();
       
-      if (error || !data) return defaultSiteContent;
-      return data.value as SiteContent;
+      if (error || !data || !data.value) return defaultSiteContent;
+      
+      const db = data.value as Partial<SiteContent>;
+      
+      // Merge seguro para garantir que chaves antigas não quebrem o site novo
+      return {
+        hero: { ...defaultSiteContent.hero, ...db.hero },
+        features: { ...defaultSiteContent.features, ...db.features },
+        authority: { ...defaultSiteContent.authority, ...db.authority },
+        showcase: { ...defaultSiteContent.showcase, ...db.showcase },
+        faq: { ...defaultSiteContent.faq, ...db.faq },
+        footer: { ...defaultSiteContent.footer, ...db.footer },
+        testimonials: { ...defaultSiteContent.testimonials, ...db.testimonials }
+      } as SiteContent;
     }
   });
 
