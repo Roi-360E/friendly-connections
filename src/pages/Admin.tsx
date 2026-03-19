@@ -226,15 +226,8 @@ export default function Admin() {
                 <CardDescription>Ajuste o VSL exibido e a ação do botão comprar.</CardDescription>
               </CardHeader>
               <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2 text-red-600 font-bold border-t pt-4">
-                  <label className="text-sm font-bold opacity-70">Opção 1: ID do Vídeo YouTube (Ex: wYbHpveuQQs)</label>
-                  <Input 
-                    value={localContent.hero.youtubeId} 
-                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, youtubeId: e.target.value }})} 
-                  />
-                </div>
                 <div className="space-y-2 text-blue-600 font-bold border-t pt-4">
-                  <label className="text-sm font-bold opacity-70">Opção 2: Fazer Upload do Vídeo MP4 (Prioridade)</label>
+                  <label className="text-sm font-bold opacity-70">Upload do Vídeo MP4 do seu computador</label>
                   <div className="flex flex-col gap-2">
                     {localContent.hero.videoSrc && <span className="text-xs font-normal text-muted-foreground break-all">Arquivo atual: {localContent.hero.videoSrc}</span>}
                     <Input 
