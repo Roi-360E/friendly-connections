@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/friendly-connections/favicon.png" type="image/png" />
+    <title>EscalaXpro — Multiplique seus criativos com IA</title>
+    <meta name="description" content="Transforme 1 roteiro em 100+ criativos validados. Use a lógica de concatenação dos grandes players para escalar no Facebook e TikTok Ads." />
+    <meta name="facebook-domain-verification" content="scu66kgpicookgjhju64uuyihuduuf" />
+    <meta property="og:title" content="Escalax — Escale seus anúncios" />
+    <meta property="og:description" content="A ferramenta que transforma 1 roteiro em 100+ criativos validados." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      window.pixelId = "69ada3e768644e09800d0b25";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+    <script type="module" crossorigin src="/friendly-connections/assets/index-CWiFy9Ew.js"></script>
+    <link rel="stylesheet" crossorigin href="/friendly-connections/assets/index-_UcsKsQ4.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var isInstagram = ua.indexOf('Instagram') > -1;
+        var isFacebook = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
+        var isLinkedIn = ua.indexOf('LinkedInApp') > -1;
+        var isLine = ua.indexOf('Line/') > -1;
+        var isWebView = ua.indexOf('wv') > -1 || ua.indexOf('WebView') > -1;
+        var isInApp = isInstagram || isFacebook || isLinkedIn || isLine || isWebView;
+
+        if (isInApp) {
+          var url = window.location.href;
+
+          if (/android/i.test(ua)) {
+            // Android: intent é o mais confiável
+            var intentUrl = 'intent://' + url.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+            window.location.replace(intentUrl);
+            setTimeout(function() { window.location.href = 'googlechrome://navigate?url=' + encodeURIComponent(url); }, 100);
+            setTimeout(function() { window.open(url, '_system'); }, 200);
+            setTimeout(function() { window.open(url, '_blank'); }, 300);
+          } else if (/iPhone|iPad|iPod/i.test(ua)) {
+            // iOS: tenta x-safari primeiro (mais confiável no Instagram)
+            window.location.replace('x-safari-' + url);
+            setTimeout(function() {
+              var chromeUrl = url.replace('https://', 'googlechromes://').replace('http://', 'googlechrome://');
+              window.location.href = chromeUrl;
+            }, 150);
+            setTimeout(function() { window.open(url, '_blank'); }, 300);
+          }
+
+          // Se o redirect falhar, o site carrega normalmente no WebView
+        }
+      })();
+    </script>
+  </body>
+</html>
