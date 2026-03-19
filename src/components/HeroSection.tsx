@@ -2,13 +2,13 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Pause, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const SIGNUP_URL = "https://deploysites.online/";
-const YOUTUBE_VIDEO_ID = "wYbHpveuQQs";
-const HERO_VIDEO_SRC = "/videos/hero-video.mp4";
-const THUMBNAIL_URL = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const HeroSection = () => {
+  const { content } = useSiteContent();
+  const { hero } = content;
+  const THUMBNAIL_URL = `https://img.youtube.com/vi/${hero.youtubeId}/maxresdefault.jpg`;
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -48,7 +48,7 @@ const HeroSection = () => {
               className="mb-5 md:mb-6 py-2 px-4 rounded-full border border-primary/20 bg-primary/5 inline-flex items-center gap-2"
             >
               <span className="text-xs md:text-sm font-semibold text-primary">
-                🔥 Créditos ILIMITADOS
+                {hero.badge}
               </span>
             </motion.div>
 
@@ -59,8 +59,8 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-5 tracking-tight text-foreground"
             >
-              Crie anúncios de alta conversão{" "}
-              <span className="text-primary">com IA.</span>
+              {hero.headline}{" "}
+              <span className="text-primary">{hero.headlineHighlight}</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -70,7 +70,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-base md:text-lg font-medium text-foreground mb-3"
             >
-              Escale campanhas como nunca antes.
+              {hero.subheadline}
             </motion.p>
 
             {/* Description */}
@@ -80,10 +80,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-sm md:text-base text-muted-foreground max-w-lg mb-8 leading-relaxed"
             >
-              Multiplique{" "}
-              <span className="text-foreground font-semibold">50, 100, 200, 300 criativos por semana</span>{" "}
-              com um passo a passo que segue à risca o que o{" "}
-              <span className="text-foreground font-semibold">Meta Andromeda</span> exige.
+              {hero.description}
             </motion.p>
 
             {/* CTA */}
@@ -93,12 +90,12 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="flex flex-col items-start w-full"
             >
-              <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <a href={hero.ctaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className="w-full sm:w-auto bg-primary text-primary-foreground text-sm md:text-base px-8 md:px-10 py-5 md:py-6 rounded-xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all glow-primary font-bold tracking-wide"
                 >
-                  ENTRAR AGORA
+                  {hero.ctaText}
                   <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </a>
@@ -118,7 +115,7 @@ const HeroSection = () => {
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden aspect-video bg-card border border-border shadow-lg">
               <video
                 ref={videoRef}
-                src={HERO_VIDEO_SRC}
+                src={hero.videoSrc}
                 poster={THUMBNAIL_URL}
                 className="w-full h-full object-cover"
                 playsInline
