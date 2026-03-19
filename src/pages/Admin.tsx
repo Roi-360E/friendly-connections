@@ -225,43 +225,53 @@ export default function Admin() {
                 <CardTitle className="text-xl">Configurações de Vídeo e Botão</CardTitle>
                 <CardDescription>Ajuste o VSL exibido e a ação do botão comprar.</CardDescription>
               </CardHeader>
-              <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2 text-blue-600 font-bold border-t pt-4">
-                  <label className="text-sm font-bold opacity-70">Upload do Vídeo MP4 do seu computador</label>
-                  <div className="flex flex-col gap-2">
-                    {localContent.hero.videoSrc && <span className="text-xs font-normal text-muted-foreground break-all">Arquivo atual: {localContent.hero.videoSrc}</span>}
-                    <Input 
-                      type="file" accept="video/mp4,video/webm"
-                      disabled={uploading}
-                      onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: url }}))} 
-                    />
-                    {uploading && <span className="text-xs text-blue-500">Enviando vídeo para o servidor...</span>}
+              <CardContent className="pt-6 space-y-5">
+                <div className="p-5 bg-gray-50 border rounded-xl space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-gray-500 uppercase">Formato do Vídeo</label>
+                      <select 
+                        className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm"
+                        value={localContent.hero.videoAspectRatio || "horizontal"}
+                        onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, videoAspectRatio: e.target.value as any }})}
+                      >
+                        <option value="horizontal">Horizontal — YouTube / Widescreen (16:9)</option>
+                        <option value="vertical">Vertical — Story / Reels / TikTok (9:16)</option>
+                      </select>
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-gray-500 uppercase">
+                        Arquivo de Vídeo MP4 {uploading && <span className="text-blue-500 animate-pulse ml-1">Enviando...</span>}
+                      </label>
+                      {localContent.hero.videoSrc && (
+                        <p className="text-[11px] text-green-600 font-medium">
+                          ✅ Vídeo atual: <span className="text-gray-500 break-all">{localContent.hero.videoSrc}</span>
+                        </p>
+                      )}
+                      <Input 
+                        type="file" accept="video/mp4,video/webm"
+                        disabled={uploading}
+                        className="bg-white cursor-pointer"
+                        onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: url }}))} 
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="space-y-2 md:col-span-2">
-                  <label className="text-sm font-bold text-gray-600">Formato do Vídeo</label>
-                  <select 
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                    value={localContent.hero.videoAspectRatio || "horizontal"}
-                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, videoAspectRatio: e.target.value as any }})}
-                  >
-                    <option value="horizontal">Horizontal (Padrão YouTube 16:9)</option>
-                    <option value="vertical">Vertical (Shorts / Reels / TikTok 9:16)</option>
-                  </select>
-                </div>
-                <div className="space-y-2 border-t pt-4">
-                  <label className="text-sm font-bold text-gray-600">Texto do Botão CTA</label>
-                  <Input 
-                    value={localContent.hero.ctaText} 
-                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, ctaText: e.target.value }})} 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-600">Link do Botão (Checkout)</label>
-                  <Input 
-                    value={localContent.hero.ctaUrl} 
-                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, ctaUrl: e.target.value }})} 
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Texto do Botão CTA</label>
+                    <Input 
+                      value={localContent.hero.ctaText} 
+                      onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, ctaText: e.target.value }})} 
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Link do Botão (Checkout)</label>
+                    <Input 
+                      value={localContent.hero.ctaUrl} 
+                      onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, ctaUrl: e.target.value }})} 
+                    />
+                  </div>
                 </div>
               </CardContent>
             </Card>
