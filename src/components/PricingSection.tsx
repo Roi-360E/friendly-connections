@@ -69,7 +69,7 @@ const plans = [
   },
   {
     name: "Ilimitado",
-    tokens: "999999 tokens",
+    tokens: "∞ tokens",
     icon: Infinity,
     price: "197,00",
     period: "/mês",
