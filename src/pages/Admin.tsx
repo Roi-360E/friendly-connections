@@ -533,60 +533,69 @@ export default function Admin() {
               </CardHeader>
               <CardContent className="pt-6 space-y-4">
                 {localContent.testimonials.videos.map((vid, idx) => (
-                  <div key={idx} className="flex flex-col md:flex-row gap-3 p-4 bg-white border shadow-sm rounded-lg items-start md:items-end">
-                    <div className="space-y-2 w-full md:w-1/4">
-                      <label className="text-xs font-bold text-gray-500 uppercase">Nome / Identificação</label>
-                      <Input 
-                        value={vid.name} 
-                        onChange={(e) => {
-                          const newVids = [...localContent.testimonials.videos];
-                          newVids[idx].name = e.target.value;
-                          setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
-                        }} 
-                      />
-                    </div>
-                    
-                    <div className="space-y-2 w-full md:w-1/4">
-                      <label className="text-xs font-bold text-gray-500 uppercase">Formato</label>
-                      <select 
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                        value={vid.aspectRatio || "horizontal"}
-                        onChange={(e) => {
-                          const newVids = [...localContent.testimonials.videos];
-                          newVids[idx].aspectRatio = e.target.value as any;
+                  <div key={idx} className="p-5 bg-gray-50 border rounded-xl space-y-4 relative">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-bold uppercase text-gray-400 tracking-wider">Depoimento #{idx + 1}</span>
+                      <Button 
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => {
+                          const newVids = localContent.testimonials.videos.filter((_, i) => i !== idx);
                           setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
                         }}
                       >
-                        <option value="horizontal">Horizontal (16:9)</option>
-                        <option value="vertical">Vertical (9:16)</option>
-                      </select>
+                        <Trash2 className="w-4 h-4 mr-1" /> Remover
+                      </Button>
                     </div>
-
-                    <div className="space-y-2 w-full md:w-2/4">
-                      <label className="text-xs font-bold text-blue-600 uppercase flex justify-between">
-                        <span>Arquivo MP4</span>
-                        {uploading && <span className="animate-pulse">Enviando...</span>}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-500 uppercase">Nome / Identificação</label>
+                        <Input 
+                          value={vid.name} 
+                          placeholder="Ex: João Silva"
+                          onChange={(e) => {
+                            const newVids = [...localContent.testimonials.videos];
+                            newVids[idx].name = e.target.value;
+                            setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                          }} 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-500 uppercase">Formato do Vídeo</label>
+                        <select 
+                          className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm"
+                          value={vid.aspectRatio || "vertical"}
+                          onChange={(e) => {
+                            const newVids = [...localContent.testimonials.videos];
+                            newVids[idx].aspectRatio = e.target.value as any;
+                            setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                          }}
+                        >
+                          <option value="vertical">Vertical — Story / Reels / TikTok (9:16)</option>
+                          <option value="horizontal">Horizontal — YouTube / Widescreen (16:9)</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-gray-500 uppercase">
+                        Arquivo de Vídeo MP4 {uploading && <span className="text-blue-500 animate-pulse ml-2">Enviando...</span>}
                       </label>
+                      {vid.src && (
+                        <p className="text-[11px] text-green-600 font-medium flex items-center gap-1">
+                          ✅ Vídeo carregado: <span className="text-gray-500 truncate max-w-[400px]">{vid.src}</span>
+                        </p>
+                      )}
                       <Input 
                         type="file" accept="video/mp4,video/webm"
                         disabled={uploading}
+                        className="bg-white cursor-pointer"
                         onChange={(e) => handleFileUpload(e, (url) => {
                           const newVids = [...localContent.testimonials.videos];
                           newVids[idx].src = url;
                           setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
                         })} 
                       />
-                      {vid.src && <p className="text-[10px] text-gray-400 truncate mt-1">Atual: {vid.src}</p>}
                     </div>
-                    <Button 
-                      variant="destructive" 
-                      onClick={() => {
-                        const newVids = localContent.testimonials.videos.filter((_, i) => i !== idx);
-                        setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
-                      }}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
                   </div>
                 ))}
               </CardContent>
