@@ -15,6 +15,7 @@ const plans = [
     url: "https://deploysites.online/cadastro/planointermediario",
     badge: "Popular",
     features: [
+      "32 tokens/mês",
       "Chat RoteiroPRÓ I.A",
       "Processamento local",
       "Suporte Básico",
@@ -31,6 +32,7 @@ const plans = [
     badge: "Popular",
     features: [
       "88 tokens/mês",
+      "Chat RoteiroPRÓ I.A",
       "Processamento local",
       "Suporte Básico",
     ],
