@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "Profissional",
-    tokens: "450 tokens",
+    tokens: "88 tokens",
     icon: Zap,
     price: "57,00",
     period: "/mês",
@@ -30,7 +30,7 @@ const plans = [
     url: "https://deploysites.online/cadastro/professional",
     badge: "Popular",
     features: [
-      "450 tokens/mês",
+      "88 tokens/mês",
       "Processamento local",
       "Suporte Básico",
     ],
