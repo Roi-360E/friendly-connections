@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
-const VideoCard = ({ src }: { src: string }) => {
+interface VideoCardProps {
+  src: string;
+  name?: string;
+  aspectRatio?: "horizontal" | "vertical";
+}
+
+const VideoCard = ({ src, name, aspectRatio }: VideoCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -57,7 +63,7 @@ const VideoCard = ({ src }: { src: string }) => {
   return (
     <div
       ref={containerRef}
-      className="relative flex-shrink-0 w-[260px] sm:w-[280px] lg:w-[300px] aspect-[9/16] rounded-2xl overflow-hidden bg-muted cursor-pointer group"
+      className={`relative flex-shrink-0 rounded-2xl overflow-hidden bg-muted cursor-pointer group ${aspectRatio === 'horizontal' ? 'w-[400px] sm:w-[500px] lg:w-[600px] aspect-video' : 'w-[260px] sm:w-[280px] lg:w-[300px] aspect-[9/16]'}`}
       onClick={toggle}
     >
       {isVisible ? (
@@ -72,6 +78,13 @@ const VideoCard = ({ src }: { src: string }) => {
         />
       ) : (
         <div className="w-full h-full bg-muted animate-pulse" />
+      )}
+      {name && (
+        <div className="absolute inset-x-0 bottom-0 p-3 lg:p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-10">
+          <p className="text-white text-xs lg:text-sm font-medium truncate drop-shadow-md">
+            {name}
+          </p>
+        </div>
       )}
       {!playing && (
         <div className="absolute inset-0 flex items-center justify-center bg-foreground/20 transition-opacity">
@@ -149,7 +162,7 @@ const TestimonialsSection = () => {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="snap-center"
               >
-                <VideoCard src={t.src} />
+                <VideoCard src={t.src} name={t.name} aspectRatio={t.aspectRatio} />
               </motion.div>
             ))}
           </div>

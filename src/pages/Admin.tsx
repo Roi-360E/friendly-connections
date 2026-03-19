@@ -18,6 +18,7 @@ export default function Admin() {
   const [plans, setPlans] = useState<PlanData[]>([]);
   const [loadingPlans, setLoadingPlans] = useState(true);
   const [savingPlans, setSavingPlans] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const { content, isLoading: loadingContent, updateContent, isSaving: savingContent } = useSiteContent();
   const [localContent, setLocalContent] = useState<SiteContent | null>(null);
@@ -114,6 +115,31 @@ export default function Admin() {
     }
   };
 
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, callback: (url: string) => void) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('site_media')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      toast({ title: "Erro no upload", description: uploadError.message + " (Você criou o bucket 'site_media' e as policies?)", variant: "destructive" });
+      setUploading(false);
+      return;
+    }
+
+    const { data } = supabase.storage.from('site_media').getPublicUrl(filePath);
+    callback(data.publicUrl);
+    setUploading(false);
+    toast({ title: "Arquivo enviado com sucesso!" });
+  };
+
   if (loadingPlans || loadingContent || !localContent) {
     return <div className="p-8 text-center mt-10 font-bold text-lg">Carregando painel...</div>;
   }
@@ -200,21 +226,37 @@ export default function Admin() {
                 <CardDescription>Ajuste o VSL exibido e a ação do botão comprar.</CardDescription>
               </CardHeader>
               <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-600">ID do Vídeo YouTube (Ex: wYbHpveuQQs)</label>
+                <div className="space-y-2 text-red-600 font-bold border-t pt-4">
+                  <label className="text-sm font-bold opacity-70">Opção 1: ID do Vídeo YouTube (Ex: wYbHpveuQQs)</label>
                   <Input 
                     value={localContent.hero.youtubeId} 
                     onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, youtubeId: e.target.value }})} 
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-600">Link do Arquivo MP4 Direto (Opcional)</label>
-                  <Input 
-                    value={localContent.hero.videoSrc} 
-                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: e.target.value }})} 
-                  />
+                <div className="space-y-2 text-blue-600 font-bold border-t pt-4">
+                  <label className="text-sm font-bold opacity-70">Opção 2: Fazer Upload do Vídeo MP4 (Prioridade)</label>
+                  <div className="flex flex-col gap-2">
+                    {localContent.hero.videoSrc && <span className="text-xs font-normal text-muted-foreground break-all">Arquivo atual: {localContent.hero.videoSrc}</span>}
+                    <Input 
+                      type="file" accept="video/mp4,video/webm"
+                      disabled={uploading}
+                      onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: url }}))} 
+                    />
+                    {uploading && <span className="text-xs text-blue-500">Enviando vídeo para o servidor...</span>}
+                  </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-sm font-bold text-gray-600">Formato do Vídeo</label>
+                  <select 
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    value={localContent.hero.videoAspectRatio || "horizontal"}
+                    onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, videoAspectRatio: e.target.value as any }})}
+                  >
+                    <option value="horizontal">Horizontal (Padrão YouTube 16:9)</option>
+                    <option value="vertical">Vertical (Shorts / Reels / TikTok 9:16)</option>
+                  </select>
+                </div>
+                <div className="space-y-2 border-t pt-4">
                   <label className="text-sm font-bold text-gray-600">Texto do Botão CTA</label>
                   <Input 
                     value={localContent.hero.ctaText} 
@@ -426,21 +468,21 @@ export default function Admin() {
               <CardHeader className="bg-slate-50 border-b flex flex-row justify-between items-center">
                 <div>
                   <CardTitle className="text-xl">Gerenciar Vídeos de Depoimentos</CardTitle>
-                  <CardDescription>Insira o link .mp4 de arquivos hospedados na nuvem ou as rotas de seus arquivos locais</CardDescription>
+                  <CardDescription>Faça upload dos vídeos nativos dos seus clientes</CardDescription>
                 </div>
                 <Button 
-                  onClick={() => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: [...localContent.testimonials.videos, { src: "", name: "Novo Cliente" }]}})} 
+                  onClick={() => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: [...localContent.testimonials.videos, { src: "", name: "Novo Cliente", aspectRatio: "horizontal" }]}})} 
                   variant="outline"
                   className="font-bold border-primary text-primary hover:bg-primary/5"
                 >
-                  <Plus className="w-4 h-4 mr-1" /> Adicionar Vídeo
+                  <Plus className="w-4 h-4 mr-1" /> Adicionar Bloco
                 </Button>
               </CardHeader>
               <CardContent className="pt-6 space-y-4">
                 {localContent.testimonials.videos.map((vid, idx) => (
-                  <div key={idx} className="flex flex-col md:flex-row gap-3 p-4 bg-gray-50 border rounded-lg items-start md:items-end">
-                    <div className="space-y-1.5 w-full md:w-1/3">
-                      <label className="text-xs font-bold text-gray-500 uppercase">Nome/Identificação</label>
+                  <div key={idx} className="flex flex-col md:flex-row gap-3 p-4 bg-white border shadow-sm rounded-lg items-start md:items-end">
+                    <div className="space-y-2 w-full md:w-1/4">
+                      <label className="text-xs font-bold text-gray-500 uppercase">Nome / Identificação</label>
                       <Input 
                         value={vid.name} 
                         onChange={(e) => {
@@ -450,16 +492,38 @@ export default function Admin() {
                         }} 
                       />
                     </div>
-                    <div className="space-y-1.5 w-full md:w-full">
-                      <label className="text-xs font-bold text-gray-500 uppercase">Link do Vídeo (.mp4 URL externa ou interna)</label>
-                      <Input 
-                        value={vid.src} 
+                    
+                    <div className="space-y-2 w-full md:w-1/4">
+                      <label className="text-xs font-bold text-gray-500 uppercase">Formato</label>
+                      <select 
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                        value={vid.aspectRatio || "horizontal"}
                         onChange={(e) => {
                           const newVids = [...localContent.testimonials.videos];
-                          newVids[idx].src = e.target.value;
+                          newVids[idx].aspectRatio = e.target.value as any;
                           setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
-                        }} 
+                        }}
+                      >
+                        <option value="horizontal">Horizontal (16:9)</option>
+                        <option value="vertical">Vertical (9:16)</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-2 w-full md:w-2/4">
+                      <label className="text-xs font-bold text-blue-600 uppercase flex justify-between">
+                        <span>Arquivo MP4</span>
+                        {uploading && <span className="animate-pulse">Enviando...</span>}
+                      </label>
+                      <Input 
+                        type="file" accept="video/mp4,video/webm"
+                        disabled={uploading}
+                        onChange={(e) => handleFileUpload(e, (url) => {
+                          const newVids = [...localContent.testimonials.videos];
+                          newVids[idx].src = url;
+                          setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                        })} 
                       />
+                      {vid.src && <p className="text-[10px] text-gray-400 truncate mt-1">Atual: {vid.src}</p>}
                     </div>
                     <Button 
                       variant="destructive" 
@@ -468,7 +532,7 @@ export default function Admin() {
                         setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
                       }}
                     >
-                      <Trash2 className="w-4 h-4 mr-1" /> Remover
+                      <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>
                 ))}

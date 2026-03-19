@@ -110,9 +110,9 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="w-full"
+            className={`w-full ${hero.videoAspectRatio === 'vertical' ? 'flex justify-center' : ''}`}
           >
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden aspect-video bg-card border border-border shadow-lg">
+            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden ${hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] w-full max-w-sm' : 'aspect-video w-full'} bg-card border border-border shadow-lg`}>
               <video
                 ref={videoRef}
                 src={hero.videoSrc}

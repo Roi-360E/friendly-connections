@@ -13,6 +13,7 @@ export interface SiteContent {
     ctaUrl: string;
     youtubeId: string;
     videoSrc: string;
+    videoAspectRatio: "horizontal" | "vertical";
   };
   features: {
     badge: string;
@@ -50,7 +51,7 @@ export interface SiteContent {
     badge: string;
     title: string;
     description: string;
-    videos: { src: string; name: string }[];
+    videos: { src: string; name: string; aspectRatio: "horizontal" | "vertical" }[];
   };
 }
 
@@ -64,7 +65,8 @@ export const defaultSiteContent: SiteContent = {
     ctaText: "ENTRAR AGORA",
     ctaUrl: "https://deploysites.online/",
     youtubeId: "wYbHpveuQQs",
-    videoSrc: "/videos/hero-video.mp4"
+    videoSrc: "/videos/hero-video.mp4",
+    videoAspectRatio: "horizontal"
   },
   features: {
     badge: "O que você recebe",
@@ -128,10 +130,10 @@ export const defaultSiteContent: SiteContent = {
     title: "O que nossos clientes dizem",
     description: "Veja resultados reais de quem já usa a plataforma para escalar seus anúncios.",
     videos: [
-      { src: "/videos/testimonial-1.mp4", name: "Cliente 1" },
-      { src: "/videos/testimonial-2.mp4", name: "Cliente 2" },
-      { src: "/videos/testimonial-3.mp4", name: "Cliente 3" },
-      { src: "/videos/testimonial-4.mp4", name: "Cliente 4" }
+      { src: "/videos/testimonial-1.mp4", name: "Cliente 1", aspectRatio: "horizontal" },
+      { src: "/videos/testimonial-2.mp4", name: "Cliente 2", aspectRatio: "horizontal" },
+      { src: "/videos/testimonial-3.mp4", name: "Cliente 3", aspectRatio: "horizontal" },
+      { src: "/videos/testimonial-4.mp4", name: "Cliente 4", aspectRatio: "horizontal" }
     ]
   }
 };
