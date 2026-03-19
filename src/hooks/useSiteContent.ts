@@ -14,6 +14,12 @@ export interface SiteContent {
     youtubeId: string;
     videoSrc: string;
   };
+  testimonials: {
+    badge: string;
+    title: string;
+    description: string;
+    videos: { src: string; name: string }[];
+  };
 }
 
 export const defaultSiteContent: SiteContent = {
@@ -27,6 +33,17 @@ export const defaultSiteContent: SiteContent = {
     ctaUrl: "https://deploysites.online/",
     youtubeId: "wYbHpveuQQs",
     videoSrc: "/videos/hero-video.mp4"
+  },
+  testimonials: {
+    badge: "Depoimentos",
+    title: "O que nossos clientes dizem",
+    description: "Veja resultados reais de quem já usa a plataforma para escalar seus anúncios.",
+    videos: [
+      { src: "/videos/testimonial-1.mp4", name: "Cliente 1" },
+      { src: "/videos/testimonial-2.mp4", name: "Cliente 2" },
+      { src: "/videos/testimonial-3.mp4", name: "Cliente 3" },
+      { src: "/videos/testimonial-4.mp4", name: "Cliente 4" }
+    ]
   }
 };
 

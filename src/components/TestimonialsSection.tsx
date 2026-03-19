@@ -1,13 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
-
-const testimonials = [
-  { src: "/videos/testimonial-1.mp4", name: "Cliente 1" },
-  { src: "/videos/testimonial-2.mp4", name: "Cliente 2" },
-  { src: "/videos/testimonial-3.mp4", name: "Cliente 3" },
-  { src: "/videos/testimonial-4.mp4", name: "Cliente 4" },
-];
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const VideoCard = ({ src }: { src: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -99,6 +93,8 @@ const VideoCard = ({ src }: { src: string }) => {
 
 const TestimonialsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { content } = useSiteContent();
+  const { testimonials } = content;
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -120,13 +116,13 @@ const TestimonialsSection = () => {
           className="text-center mb-8 lg:mb-14"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            Depoimentos
+            {testimonials.badge}
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            O que nossos clientes dizem
+            {testimonials.title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
-            Veja resultados reais de quem já usa a plataforma para escalar seus anúncios.
+            {testimonials.description}
           </p>
         </motion.div>
 
@@ -144,7 +140,7 @@ const TestimonialsSection = () => {
             className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide px-1 sm:px-2 py-2 snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
           >
-            {testimonials.map((t, i) => (
+            {testimonials.videos.map((t, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}

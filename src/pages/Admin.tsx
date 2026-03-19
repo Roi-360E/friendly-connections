@@ -106,9 +106,9 @@ export default function Admin() {
         <Tabs defaultValue="hero" className="w-full">
           <TabsList className="mb-8 p-1 h-auto flex flex-wrap bg-white shadow-sm border rounded-lg">
             <TabsTrigger value="hero" className="py-2.5 px-6 font-semibold">Topo / VSL</TabsTrigger>
+            <TabsTrigger value="testimonials" className="py-2.5 px-6 font-semibold">Depoimentos</TabsTrigger>
             <TabsTrigger value="pricing" className="py-2.5 px-6 font-semibold">Planos de Preço</TabsTrigger>
-            <TabsTrigger value="features" className="py-2.5 px-6 font-semibold opacity-50" disabled>Benefícios (Em breve)</TabsTrigger>
-            <TabsTrigger value="faq" className="py-2.5 px-6 font-semibold opacity-50" disabled>FAQ (Em breve)</TabsTrigger>
+            <TabsTrigger value="features" className="py-2.5 px-6 font-semibold opacity-50" disabled>Benefícios</TabsTrigger>
           </TabsList>
 
           {/* VSL HERO TAB */}
@@ -198,6 +198,99 @@ export default function Admin() {
             <div className="flex justify-end pt-4">
               <Button size="lg" onClick={handleSaveContent} disabled={savingContent} className="px-10 text-lg font-bold">
                 {savingContent ? "Publicando..." : "Salvar Tela Inicial"}
+              </Button>
+            </div>
+          </TabsContent>
+
+          {/* TESTIMONIALS TAB */}
+          <TabsContent value="testimonials" className="space-y-6">
+            <Card className="shadow-md border-0">
+              <CardHeader className="bg-slate-50 border-b">
+                <CardTitle className="text-xl">Textos da Seção</CardTitle>
+                <CardDescription>Ajuste o título e textos de chamada dos depoimentos.</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-gray-600">Alerta (Badge Pequena)</label>
+                  <Input 
+                    value={localContent.testimonials.badge} 
+                    onChange={e => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, badge: e.target.value }})} 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-gray-600">Título Principal</label>
+                  <Input 
+                    value={localContent.testimonials.title} 
+                    onChange={e => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, title: e.target.value }})} 
+                  />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-sm font-bold text-gray-600">Descrição Textual</label>
+                  <Textarea 
+                    rows={2}
+                    value={localContent.testimonials.description} 
+                    onChange={e => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, description: e.target.value }})} 
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-md border-0">
+              <CardHeader className="bg-slate-50 border-b flex flex-row justify-between items-center">
+                <div>
+                  <CardTitle className="text-xl">Gerenciar Vídeos de Depoimentos</CardTitle>
+                  <CardDescription>Insira o link .mp4 de arquivos hospedados na nuvem ou as rotas de seus arquivos locais</CardDescription>
+                </div>
+                <Button 
+                  onClick={() => setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: [...localContent.testimonials.videos, { src: "", name: "Novo Cliente" }]}})} 
+                  variant="outline"
+                  className="font-bold border-primary text-primary hover:bg-primary/5"
+                >
+                  + Adicionar Vídeo
+                </Button>
+              </CardHeader>
+              <CardContent className="pt-6 space-y-4">
+                {localContent.testimonials.videos.map((vid, idx) => (
+                  <div key={idx} className="flex flex-col md:flex-row gap-3 p-4 bg-gray-50 border rounded-lg items-start md:items-end">
+                    <div className="space-y-1.5 w-full md:w-1/3">
+                      <label className="text-xs font-bold text-gray-500 uppercase">Nome/Identificação</label>
+                      <Input 
+                        value={vid.name} 
+                        onChange={(e) => {
+                          const newVids = [...localContent.testimonials.videos];
+                          newVids[idx].name = e.target.value;
+                          setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                        }} 
+                      />
+                    </div>
+                    <div className="space-y-1.5 w-full md:w-full">
+                      <label className="text-xs font-bold text-gray-500 uppercase">Link do Vídeo (.mp4 URL externa ou interna)</label>
+                      <Input 
+                        value={vid.src} 
+                        onChange={(e) => {
+                          const newVids = [...localContent.testimonials.videos];
+                          newVids[idx].src = e.target.value;
+                          setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                        }} 
+                      />
+                    </div>
+                    <Button 
+                      variant="destructive" 
+                      onClick={() => {
+                        const newVids = localContent.testimonials.videos.filter((_, i) => i !== idx);
+                        setLocalContent({...localContent, testimonials: { ...localContent.testimonials, videos: newVids }});
+                      }}
+                    >
+                      Remover
+                    </Button>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <div className="flex justify-end pt-4">
+              <Button size="lg" onClick={handleSaveContent} disabled={savingContent} className="px-10 text-lg font-bold">
+                {savingContent ? "Publicando..." : "Salvar Depoimentos"}
               </Button>
             </div>
           </TabsContent>
