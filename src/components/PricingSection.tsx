@@ -7,7 +7,7 @@ const DEFAULT_SIGNUP_URL = "https://deploysites.online/";
 const plans = [
   {
     name: "Plano Intermediário",
-    tokens: "82 tokens",
+    tokens: "32 tokens",
     icon: Crown,
     price: "37,90",
     period: "/mês",

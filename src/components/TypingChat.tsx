@@ -1,118 +1,113 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, Send, Loader2 } from "lucide-react";
+import { askGemini } from "@/gemini"; // Puxa a função que criamos antes
 
-const chatLines = [
-  "Sou o RoteiroPRO. Vou transformar sua retenção em vendas com roteiros de alto impacto.",
-  "Para começar, responda de forma curta:",
-  "📋 Qual seu produto/serviço e nicho?",
-  "🎯 Quem é seu cliente ideal? (idade, dor principal)",
-  "💎 Qual seu diferencial e promessa principal?",
-  "🚀 Objetivo do vídeo? (vender, engajar, educar, viralizar)",
-  "🎨 Tom da marca? (provocativo, empático, autoritário, educativo)",
-  "📊 Tem resultados/números/depoimentos pra usar?",
-  "Me envie as informações",
-];
+interface Message {
+  role: "user" | "bot";
+  content: string;
+}
 
 const TypingChat = () => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    { role: "bot", content: "Olá! Sou o RoteiroPRO. Me diga qual o seu produto ou nicho e eu vou criar um roteiro de alto impacto para você!" }
+  ]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const reset = useCallback(() => {
-    setDisplayedText("");
-    setLineIndex(0);
-    setCharIndex(0);
-    setIsComplete(false);
-  }, []);
-
+  // Faz o chat rolar para baixo automaticamente quando chega mensagem nova
   useEffect(() => {
-    if (isComplete) {
-      const timeout = setTimeout(reset, 3000);
-      return () => clearTimeout(timeout);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
+  }, [messages, isLoading]);
 
-    if (lineIndex >= chatLines.length) {
-      setIsComplete(true);
-      return;
+  const handleSendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput(""); // Limpa o campo de texto
+    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      // Chama o seu Google Gemini
+      const aiResponse = await askGemini(userMessage);
+      setMessages((prev) => [...prev, { role: "bot", content: aiResponse }]);
+    } catch (error) {
+      setMessages((prev) => [...prev, { role: "bot", content: "Ops, tive um erro ao conectar. Verifique sua chave da API." }]);
+    } finally {
+      setIsLoading(false);
     }
-
-    const currentLine = chatLines[lineIndex];
-
-    if (charIndex >= currentLine.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + "\n");
-        setLineIndex((prev) => prev + 1);
-        setCharIndex(0);
-      }, 200);
-      return () => clearTimeout(timeout);
-    }
-
-    const speed = charIndex === 0 ? 80 : 25 + Math.random() * 35;
-    const timeout = setTimeout(() => {
-      setDisplayedText((prev) => prev + currentLine[charIndex]);
-      setCharIndex((prev) => prev + 1);
-    }, speed);
-
-    return () => clearTimeout(timeout);
-  }, [lineIndex, charIndex, isComplete, reset]);
-
-  const lines = displayedText.split("\n");
+  };
 
   return (
-    <div className="w-full max-w-[320px] mx-auto rounded-2xl overflow-hidden border border-border bg-background shadow-sm">
+    <div className="w-full max-w-[400px] mx-auto rounded-2xl overflow-hidden border border-border bg-background shadow-lg flex flex-col h-[500px]">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-card">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center">
-            <MessageCircle className="w-3.5 h-3.5 text-primary" />
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <MessageCircle className="w-5 h-5 text-primary" />
           </div>
-          <span className="text-sm font-bold text-primary">RoteiroPRO IA</span>
+          <span className="text-sm font-bold text-primary uppercase tracking-wider">EscalaXPro IA</span>
         </div>
       </div>
 
       {/* Chat body */}
-      <div className="p-4 min-h-[320px] max-h-[380px] overflow-hidden">
-        <div className="flex justify-end mb-3">
-          <div className="bg-primary text-primary-foreground text-xs px-3 py-2 rounded-2xl rounded-tr-sm max-w-[80%]">
-            oi
+      <div 
+        ref={scrollRef}
+        className="flex-1 p-4 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-primary/10"
+      >
+        <AnimatePresence>
+          {messages.map((msg, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                  msg.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-tr-sm"
+                    : "bg-card text-foreground border border-border rounded-tl-sm"
+                }`}
+              >
+                {msg.content}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+        
+        {isLoading && (
+          <div className="flex justify-start">
+            <div className="bg-card border border-border px-4 py-2.5 rounded-2xl rounded-tl-sm">
+              <Loader2 className="w-4 h-4 animate-spin text-primary" />
+            </div>
           </div>
-        </div>
-
-        <div className="flex justify-start">
-          <div className="bg-card text-foreground text-xs px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed whitespace-pre-wrap border border-border">
-            {lines.map((line, i) => (
-              <span key={i}>
-                {line}
-                {i < lines.length - 1 && <br />}
-              </span>
-            ))}
-            {!isComplete && (
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-                className="inline-block w-[2px] h-[14px] bg-primary ml-0.5 align-middle"
-              />
-            )}
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Input bar */}
-      <div className="px-4 pb-4 pt-2">
-        <div className="flex items-center gap-2 bg-card rounded-full px-4 py-2.5 border border-border">
-          <span className="text-xs text-muted-foreground flex-1 flex items-center">
-            Descreva seu vídeo...
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.7, repeat: Infinity, repeatType: "reverse" }}
-              className="inline-block w-[1.5px] h-[12px] bg-muted-foreground/60 ml-0.5"
-            />
-          </span>
-          <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
-            <MessageCircle className="w-3.5 h-3.5 text-primary-foreground" />
-          </div>
+      <div className="p-4 border-t border-border bg-card">
+        <div className="flex items-center gap-2 bg-background rounded-full pl-4 pr-1.5 py-1.5 border border-border focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+            placeholder="Descreva seu vídeo ou nicho..."
+            className="flex-1 bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground"
+            disabled={isLoading}
+          />
+          <button
+            onClick={handleSendMessage}
+            disabled={isLoading}
+            className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-all"
+          >
+            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+          </button>
         </div>
       </div>
     </div>
