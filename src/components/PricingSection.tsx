@@ -37,7 +37,7 @@ const plans = [
   },
   {
     name: "Avançado",
-    tokens: "400 tokens",
+    tokens: "100 tokens",
     icon: Star,
     price: "67,90",
     period: "/mês",
@@ -45,7 +45,7 @@ const plans = [
     url: "https://deploysites.online/cadastro/advanced",
     badge: "Popular",
     features: [
-      "750 tokens/mês",
+      "100 tokens/mês",
       "Processamento local",
       "Suporte Avançado",
       "Legendas com IA",
