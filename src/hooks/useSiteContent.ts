@@ -14,6 +14,38 @@ export interface SiteContent {
     youtubeId: string;
     videoSrc: string;
   };
+  features: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    description: string;
+    items: { title: string; description: string }[];
+  };
+  authority: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    description: string;
+    stats: { value: string; label: string }[];
+    ctaText: string;
+  };
+  showcase: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    items: { badge: string; title: string; description: string }[];
+  };
+  faq: {
+    badge: string;
+    title: string;
+    items: { question: string; answer: string }[];
+  };
+  footer: {
+    textLogo: string;
+    textLogoHighlight: string;
+    links: { label: string; url: string }[];
+    copyright: string;
+  };
   testimonials: {
     badge: string;
     title: string;
@@ -33,6 +65,63 @@ export const defaultSiteContent: SiteContent = {
     ctaUrl: "https://deploysites.online/",
     youtubeId: "wYbHpveuQQs",
     videoSrc: "/videos/hero-video.mp4"
+  },
+  features: {
+    badge: "O que você recebe",
+    title: "A máquina de criativos que vai",
+    titleHighlight: "escalar suas campanhas",
+    description: "Tudo que media buyers de 6 e 7 dígitos usam para nunca ficar sem criativos novos.",
+    items: [
+      { title: "Estrutura Gancho + Corpo + CTA", description: "Monte criativos seguindo a fórmula que o Meta Andromeda exige: capture atenção, entregue valor e converta com CTAs poderosos." },
+      { title: "Roteirista IA Integrado", description: "Copywriter com lógica de Erico Rocha, Ladeirinha e Hana embutido. Gere roteiros de alto impacto em segundos." },
+      { title: "Multiplicação em Massa", description: "10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos. Produza em escala sem equipe de edição." },
+      { title: "Descubra o que Converte", description: "Teste centenas de variações e encontre os criativos vencedores antes de investir pesado em mídia paga." },
+      { title: "Processamento em Nuvem", description: "Seus vídeos são processados na nuvem. Não trava, não depende do seu computador, funciona 24h por dia." }
+    ]
+  },
+  authority: {
+    badge: "Quem criou isso",
+    title: "Desenvolvido por quem",
+    titleHighlight: "escala de verdade.",
+    description: "São 10 anos de experiência em tecnologia condensados em uma ferramenta que resolve o maior gargalo de quem roda tráfego: a falta de criativos novos toda semana. Cada funcionalidade foi pensada para quem precisa de volume com qualidade.",
+    stats: [
+      { value: "10+", label: "Anos de experiência" },
+      { value: "300+", label: "Criativos por semana" },
+      { value: "24h", label: "Processamento em nuvem" }
+    ],
+    ctaText: "Quero começar agora"
+  },
+  showcase: {
+    badge: "Por dentro do app",
+    title: "Veja o que você vai ter",
+    titleHighlight: "nas suas mãos",
+    items: [
+      { badge: "BÔNUS INCLUSO", title: "Roteirista IA Integrado", description: "Gere roteiros de alto impacto com IA treinada nas metodologias de Erico Rocha, Ladeirinha e Hana." },
+      { badge: "FUNCIONALIDADE PRINCIPAL", title: "Multiplicação em Massa", description: "10 ganchos × 5 corpos × 2 CTAs = 100 criativos prontos para subir nas campanhas." }
+    ]
+  },
+  faq: {
+    badge: "Dúvidas",
+    title: "Perguntas Frequentes",
+    items: [
+      { question: "O que exatamente eu recebo ao comprar?", answer: "Você recebe acesso completo ao aplicativo EscalaxPro..." },
+      { question: "Preciso saber editar vídeo?", answer: "Não! O app faz todo o trabalho pesado por você..." },
+      { question: "Quantos criativos consigo gerar por semana?", answer: "Com a lógica de multiplicação, você pode gerar facilmente 50 a 300 criativos por semana." },
+      { question: "Funciona para qualquer nicho?", answer: "Sim! A lógica de concatenação funciona para qualquer vertical." },
+      { question: "Funciona no Facebook e TikTok Ads?", answer: "Sim. Os criativos são exportados em formatos compatíveis." },
+      { question: "Tem garantia?", answer: "Sim! Garantia incondicional de 7 dias." },
+      { question: "Qual a forma de pagamento?", answer: "Aceitamos cartão de crédito (até 12x), PIX e boleto bancário." }
+    ]
+  },
+  footer: {
+    textLogo: "ESCALAX",
+    textLogoHighlight: "PRO",
+    links: [
+      { label: "Termos de Uso", url: "#" },
+      { label: "Política de Privacidade", url: "#" },
+      { label: "Suporte", url: "#" }
+    ],
+    copyright: `© ${new Date().getFullYear()} EscalaxPro. Todos os direitos reservados.`
   },
   testimonials: {
     badge: "Depoimentos",

@@ -2,16 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import screenshot7 from "@/assets/app-screenshot-7.png";
-
-const SIGNUP_URL = "https://deploysites.online/";
-
-const stats = [
-  { value: "10+", label: "Anos de experiência" },
-  { value: "300+", label: "Criativos por semana" },
-  { value: "24h", label: "Processamento em nuvem" },
-];
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const AuthoritySection = () => {
+  const { content } = useSiteContent();
+  const { authority } = content;
+
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -34,32 +30,29 @@ const AuthoritySection = () => {
             className="order-1 lg:order-2"
           >
             <span className="text-xs text-primary tracking-widest uppercase mb-3 md:mb-4 block font-semibold">
-              Quem criou isso
+              {authority.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 leading-tight tracking-tight text-foreground">
-              Desenvolvido por quem{" "}
-              <span className="text-primary">escala de verdade.</span>
+              {authority.title}{" "}
+              <span className="text-primary">{authority.titleHighlight}</span>
             </h2>
             <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8 leading-relaxed">
-              São 10 anos de experiência em tecnologia condensados em uma ferramenta que resolve
-              o maior gargalo de quem roda tráfego:{" "}
-              <span className="text-foreground font-semibold">a falta de criativos novos toda semana.</span>{" "}
-              Cada funcionalidade foi pensada para quem precisa de volume com qualidade.
+              {authority.description}
             </p>
 
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-3 mb-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="stat-card">
+              {authority.stats.map((stat, i) => (
+                <div key={i} className="stat-card">
                   <div className="text-xl md:text-2xl font-black text-primary">{stat.value}</div>
                   <div className="text-[10px] md:text-xs text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+            <a href={content.hero.ctaUrl} target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold glow-primary">
-                Quero começar agora
+                {authority.ctaText}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
