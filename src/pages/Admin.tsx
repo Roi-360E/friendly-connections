@@ -283,9 +283,18 @@ export default function Admin() {
           {/* FEATURES TAB */}
           <TabsContent value="features" className="space-y-6">
             <Card className="shadow-md border-0">
-              <CardHeader className="bg-slate-50 border-b">
-                <CardTitle className="text-xl">Benefícios</CardTitle>
-                <CardDescription>Ajuste o título e textos dos blocos de benefícios (Cards).</CardDescription>
+              <CardHeader className="bg-slate-50 border-b flex flex-row justify-between items-center">
+                <div>
+                  <CardTitle className="text-xl">Benefícios</CardTitle>
+                  <CardDescription>Ajuste o título e textos dos blocos de benefícios (Cards).</CardDescription>
+                </div>
+                <Button 
+                  onClick={() => setLocalContent({...localContent, features: { ...localContent.features, items: [...localContent.features.items, { title: "Novo Benefício", description: "" }]}})} 
+                  variant="outline"
+                  className="font-bold border-primary text-primary hover:bg-primary/5"
+                >
+                  <Plus className="w-4 h-4 mr-1" /> Adicionar Bloco
+                </Button>
               </CardHeader>
               <CardContent className="pt-6 grid grid-cols-1 gap-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -305,19 +314,30 @@ export default function Admin() {
                 <hr className="my-2" />
                 <h3 className="font-bold text-sm uppercase text-gray-500">Blocos de Benefícios (Cards)</h3>
                 {localContent.features.items.map((feat, idx) => (
-                  <div key={idx} className="flex gap-4 p-4 border rounded relative">
-                    <div className="flex-1 space-y-2">
+                  <div key={idx} className="flex gap-4 p-4 bg-white border shadow-sm rounded-lg relative items-start">
+                    <div className="flex-1 space-y-3">
+                       <label className="text-xs font-bold text-gray-500 uppercase">Título do Benefício</label>
                        <Input value={feat.title} onChange={e => {
                          const n = [...localContent.features.items];
                          n[idx].title = e.target.value;
                          setLocalContent({...localContent, features: {...localContent.features, items: n}});
-                       }} placeholder="Título do Card" />
+                       }} placeholder="Ex: Roteirista IA" />
+                       <label className="text-xs font-bold text-gray-500 uppercase">Descrição Textual</label>
                        <Textarea value={feat.description} rows={2} onChange={e => {
                          const n = [...localContent.features.items];
                          n[idx].description = e.target.value;
                          setLocalContent({...localContent, features: {...localContent.features, items: n}});
-                       }} placeholder="Descrição" />
+                       }} placeholder="Explicação detalhada..." />
                     </div>
+                    <Button 
+                      variant="destructive" 
+                      onClick={() => {
+                        const n = localContent.features.items.filter((_, i) => i !== idx);
+                        setLocalContent({...localContent, features: { ...localContent.features, items: n }});
+                      }}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
                   </div>
                 ))}
               </CardContent>
@@ -332,9 +352,18 @@ export default function Admin() {
           {/* SHOWCASE TAB */}
           <TabsContent value="showcase" className="space-y-6">
             <Card className="shadow-md border-0">
-              <CardHeader className="bg-slate-50 border-b">
-                <CardTitle className="text-xl">Por Dentro do App (Showcase)</CardTitle>
-                <CardDescription>Ajuste os textos da visualização interna do seu App.</CardDescription>
+              <CardHeader className="bg-slate-50 border-b flex flex-row justify-between items-center">
+                <div>
+                  <CardTitle className="text-xl">Por Dentro do App (Showcase)</CardTitle>
+                  <CardDescription>Ajuste os textos da visualização interna do seu App.</CardDescription>
+                </div>
+                <Button 
+                  onClick={() => setLocalContent({...localContent, showcase: { ...localContent.showcase, items: [...localContent.showcase.items, { badge: "NOVO", title: "Item Adicionado", description: "" }]}})} 
+                  variant="outline"
+                  className="font-bold border-primary text-primary hover:bg-primary/5"
+                >
+                  <Plus className="w-4 h-4 mr-1" /> Adicionar Bloco Showocase
+                </Button>
               </CardHeader>
               <CardContent className="pt-6 grid grid-cols-1 gap-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -350,27 +379,36 @@ export default function Admin() {
                 <hr className="my-2" />
                 <h3 className="font-bold text-sm uppercase text-gray-500">Dois Blocos de Imagem</h3>
                 {localContent.showcase.items.map((item, idx) => (
-                  <div key={idx} className="flex gap-4 p-4 border rounded relative">
-                    <div className="flex-1 space-y-2">
-                       <label className="text-xs font-bold text-gray-500">Badge/Selo superior</label>
+                  <div key={idx} className="flex gap-4 p-4 bg-white border shadow-sm rounded-lg relative items-start">
+                    <div className="flex-1 space-y-3">
+                       <label className="text-xs font-bold text-gray-500 uppercase">Badge/Selo superior</label>
                        <Input value={item.badge} onChange={e => {
                          const n = [...localContent.showcase.items];
                          n[idx].badge = e.target.value;
                          setLocalContent({...localContent, showcase: {...localContent.showcase, items: n}});
                        }} />
-                       <label className="text-xs font-bold text-gray-500">Título</label>
+                       <label className="text-xs font-bold text-gray-500 uppercase">Título</label>
                        <Input value={item.title} onChange={e => {
                          const n = [...localContent.showcase.items];
                          n[idx].title = e.target.value;
                          setLocalContent({...localContent, showcase: {...localContent.showcase, items: n}});
                        }} />
-                       <label className="text-xs font-bold text-gray-500">Descrição</label>
+                       <label className="text-xs font-bold text-gray-500 uppercase">Descrição</label>
                        <Textarea value={item.description} rows={2} onChange={e => {
                          const n = [...localContent.showcase.items];
                          n[idx].description = e.target.value;
                          setLocalContent({...localContent, showcase: {...localContent.showcase, items: n}});
                        }} />
                     </div>
+                    <Button 
+                      variant="destructive" 
+                      onClick={() => {
+                        const n = localContent.showcase.items.filter((_, i) => i !== idx);
+                        setLocalContent({...localContent, showcase: { ...localContent.showcase, items: n }});
+                      }}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
                   </div>
                 ))}
               </CardContent>
@@ -385,9 +423,18 @@ export default function Admin() {
           {/* AUTHORITY TAB */}
           <TabsContent value="authority" className="space-y-6">
              <Card className="shadow-md border-0">
-              <CardHeader className="bg-slate-50 border-b">
-                <CardTitle className="text-xl">Seção Sobre a Ferramenta / Autoridade</CardTitle>
-                <CardDescription>Ajuste as estatísticas e os botões.</CardDescription>
+              <CardHeader className="bg-slate-50 border-b flex flex-row justify-between items-center">
+                <div>
+                  <CardTitle className="text-xl">Seção Sobre a Ferramenta / Autoridade</CardTitle>
+                  <CardDescription>Ajuste as estatísticas e os botões.</CardDescription>
+                </div>
+                <Button 
+                  onClick={() => setLocalContent({...localContent, authority: { ...localContent.authority, stats: [...localContent.authority.stats, { value: "0", label: "Novo Dado" }]}})} 
+                  variant="outline"
+                  className="font-bold border-primary text-primary hover:bg-primary/5"
+                >
+                  <Plus className="w-4 h-4 mr-1" /> Adicionar Célula
+                </Button>
               </CardHeader>
               <CardContent className="pt-6 grid grid-cols-1 gap-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -406,15 +453,28 @@ export default function Admin() {
                 </div>
                 <hr className="my-2" />
                 <h3 className="font-bold text-sm uppercase text-gray-500">Números Relevantes (Stats)</h3>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {localContent.authority.stats.map((stat, idx) => (
-                    <div key={idx} className="p-3 border rounded space-y-2 bg-gray-50">
+                    <div key={idx} className="p-4 border rounded-lg shadow-sm space-y-3 bg-white relative">
+                       <div className="absolute top-2 right-2">
+                         <Button 
+                           variant="ghost" size="sm" className="h-6 w-6 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+                           onClick={() => {
+                             const n = localContent.authority.stats.filter((_, i) => i !== idx);
+                             setLocalContent({...localContent, authority: { ...localContent.authority, stats: n }});
+                           }}
+                         >
+                           <Trash2 className="w-4 h-4" />
+                         </Button>
+                       </div>
+                       <label className="text-xs font-bold text-gray-500 uppercase">Valor</label>
                        <Input value={stat.value} placeholder="Ex: 10+" onChange={e => {
                          const n = [...localContent.authority.stats];
                          n[idx].value = e.target.value;
                          setLocalContent({...localContent, authority: {...localContent.authority, stats: n}});
                        }} />
-                       <Input value={stat.label} placeholder="Rótulo" onChange={e => {
+                       <label className="text-xs font-bold text-gray-500 uppercase">Rótulo / Descrição</label>
+                       <Input value={stat.label} placeholder="Ex: Anos de mercado" onChange={e => {
                          const n = [...localContent.authority.stats];
                          n[idx].label = e.target.value;
                          setLocalContent({...localContent, authority: {...localContent.authority, stats: n}});
