@@ -9,7 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlanData } from "@/components/PricingSection";
 import { useSiteContent, SiteContent } from "@/hooks/useSiteContent";
-import { Trash2, Plus } from "lucide-react";
+import { Trash2, Plus, RefreshCw } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -22,6 +23,12 @@ export default function Admin() {
 
   const { content, isLoading: loadingContent, updateContent, isSaving: savingContent } = useSiteContent();
   const [localContent, setLocalContent] = useState<SiteContent | null>(null);
+  const queryClient = useQueryClient();
+
+  const handleHardRefresh = () => {
+    queryClient.invalidateQueries({ queryKey: ["site_content"] });
+    toast({ title: "Atualizando...", description: "Buscando dados mais recentes do servidor." });
+  };
 
   useEffect(() => {
     fetchPricingPlans();
@@ -111,7 +118,13 @@ export default function Admin() {
 
   const handleSaveContent = async () => {
     if (localContent) {
-      updateContent(localContent);
+      // Add timestamp to videoSrc to bust cache on site
+      const updatedHero = { ...localContent.hero };
+      if (updatedHero.videoSrc) {
+        const separator = updatedHero.videoSrc.includes('?') ? '&' : '?';
+        updatedHero.videoSrc = updatedHero.videoSrc.split('?v=')[0] + `${separator}v=${Date.now()}`;
+      }
+      updateContent({ ...localContent, hero: updatedHero });
     }
   };
 
@@ -156,9 +169,14 @@ export default function Admin() {
             <h1 className="text-3xl font-black text-gray-900">Painel Administrativo</h1>
             <p className="text-gray-500 font-medium">Edite todos os vídeos e textos da sua página aqui.</p>
           </div>
-          <Button variant="outline" onClick={handleLogout} className="font-bold border-red-200 text-red-600 hover:bg-red-50">
-            Encerrar Sessão
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button variant="outline" size="sm" onClick={handleHardRefresh} className="font-bold text-gray-500 border-gray-200">
+              <RefreshCw className="w-4 h-4 mr-1" /> Forçar Sincronização
+            </Button>
+            <Button variant="outline" onClick={handleLogout} className="font-bold border-red-200 text-red-600 hover:bg-red-50">
+              Encerrar Sessão
+            </Button>
+          </div>
         </header>
 
         <div className="flex justify-between items-center mb-4">

@@ -114,12 +114,11 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className={`w-full ${hero.videoAspectRatio === 'vertical' ? 'flex justify-center flex-col items-center' : ''}`}
           >
-            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden ${hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] w-full max-w-[320px] md:max-w-[380px]' : 'aspect-video w-full'} bg-card border border-border shadow-lg`}>
+            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden ${hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] w-full max-w-[320px] md:max-w-[380px]' : 'aspect-video w-full'} bg-slate-900 border border-border shadow-lg`}>
               <video
                 key={hero.videoSrc}
                 ref={videoRef}
                 src={hero.videoSrc}
-                poster={THUMBNAIL_URL}
                 className="w-full h-full object-cover"
                 playsInline
                 preload="metadata"
