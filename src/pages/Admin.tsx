@@ -315,6 +315,35 @@ export default function Admin() {
                       onChange={e => setLocalContent({...localContent, hero: { ...localContent.hero, ctaUrl: e.target.value }})} 
                     />
                   </div>
+
+                  {/* LIVE PREVIEW OF SELECTED VSL */}
+                  {localContent.hero.videoSrc && (
+                    <div className="p-4 bg-slate-900 rounded-xl border-4 border-slate-800 shadow-inner">
+                      <div className="flex justify-between items-center mb-3">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                          📺 Prévia do VSL Selecionado (Local)
+                        </label>
+                        {localContent.hero.videoSrc !== content.hero.videoSrc && (
+                          <span className="text-[10px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold animate-pulse">
+                            ⚠️ NÃO SALVO NO SITE
+                          </span>
+                        )}
+                      </div>
+                      <div className={`relative mx-auto overflow-hidden rounded-lg bg-black ${localContent.hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] max-w-[180px]' : 'aspect-video w-full max-w-[400px]'}`}>
+                        <video 
+                          key={localContent.hero.videoSrc}
+                          src={localContent.hero.videoSrc} 
+                          controls 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      {localContent.hero.videoSrc !== content.hero.videoSrc && (
+                        <p className="text-center text-amber-400 text-[11px] font-bold mt-3">
+                          Você selecionou um novo vídeo. Clique em "Salvar Tela Inicial" abaixo para publicar!
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
