@@ -129,7 +129,11 @@ export default function Admin() {
       .upload(filePath, file);
 
     if (uploadError) {
-      toast({ title: "Erro no upload", description: uploadError.message + " (Você criou o bucket 'site_media' e as policies?)", variant: "destructive" });
+      let msg = uploadError.message;
+      if (msg.toLowerCase().includes("size") || msg.toLowerCase().includes("exceeded")) {
+        msg = "O arquivo é muito grande para o seu limite atual do Supabase. Siga o 'Passo 3' do guia para aumentar para 500MB.";
+      }
+      toast({ title: "Erro no upload", description: msg, variant: "destructive" });
       setUploading(false);
       return;
     }
