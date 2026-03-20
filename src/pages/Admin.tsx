@@ -169,6 +169,7 @@ export default function Admin() {
             <TabsTrigger value="authority" className="py-2.5 px-6 font-semibold">Autoridade</TabsTrigger>
             <TabsTrigger value="testimonials" className="py-2.5 px-6 font-semibold">Depoimentos</TabsTrigger>
             <TabsTrigger value="faq" className="py-2.5 px-6 font-semibold">FAQ</TabsTrigger>
+            <TabsTrigger value="images" className="py-2.5 px-6 font-semibold text-purple-600 bg-purple-50">🖼️ Imagens</TabsTrigger>
             <TabsTrigger value="pricing" className="py-2.5 px-6 font-semibold text-primary bg-primary/5">Planos de Preço</TabsTrigger>
             <TabsTrigger value="footer" className="py-2.5 px-6 font-semibold">Rodapé</TabsTrigger>
           </TabsList>
@@ -241,21 +242,59 @@ export default function Admin() {
                     </div>
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-gray-500 uppercase">
-                        Arquivo de Vídeo MP4 {uploading && <span className="text-blue-500 animate-pulse ml-1">Enviando...</span>}
+                        {uploading ? (
+                          <span className="text-blue-500 animate-pulse">Enviando Vídeo...</span>
+                        ) : (
+                          "Fazer Novo Upload (MP4)"
+                        )}
                       </label>
-                      {localContent.hero.videoSrc && (
-                        <p className="text-[11px] text-green-600 font-medium">
-                          ✅ Vídeo atual: <span className="text-gray-500 break-all">{localContent.hero.videoSrc}</span>
-                        </p>
-                      )}
                       <Input 
                         type="file" accept="video/mp4,video/webm"
                         disabled={uploading}
                         className="bg-white cursor-pointer"
-                        onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: url }}))} 
+                        onChange={e => handleFileUpload(e, url => {
+                          const history = localContent.hero.vslHistory || [];
+                          setLocalContent({
+                            ...localContent, 
+                            hero: { 
+                              ...localContent.hero, 
+                              videoSrc: url,
+                              vslHistory: [url, ...history.filter(v => v !== url)].slice(0, 10)
+                            }
+                          });
+                        })} 
                       />
                     </div>
                   </div>
+
+                  {/* VSL HISTORY LIBRARY */}
+                  {(localContent.hero.vslHistory?.length > 0) && (
+                    <div className="pt-4 border-t">
+                      <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-3">
+                        📚 Biblioteca de Vídeos (Histórico)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                        {localContent.hero.vslHistory.map((videoUrl, idx) => (
+                          <div 
+                            key={idx}
+                            onClick={() => setLocalContent({...localContent, hero: { ...localContent.hero, videoSrc: videoUrl }})}
+                            className={`relative aspect-video rounded-lg overflow-hidden border-2 cursor-pointer transition-all hover:scale-105 ${localContent.hero.videoSrc === videoUrl ? 'border-primary shadow-md' : 'border-transparent hover:border-gray-300'}`}
+                          >
+                            <video src={videoUrl} className="w-full h-full object-cover pointer-events-none" preload="metadata" />
+                            {localContent.hero.videoSrc === videoUrl && (
+                              <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                                <span className="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">Ativo</span>
+                              </div>
+                            )}
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-1">
+                              <p className="text-[8px] text-white truncate">{videoUrl.split('/').pop()}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-[10px] text-gray-400 mt-2 italic">* Clique em um vídeo acima para selecioná-lo como o VSL oficial do site.</p>
+                    </div>
+                  )}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                   <div className="space-y-1">
@@ -660,6 +699,152 @@ export default function Admin() {
             <div className="flex justify-end pt-4">
               <Button size="lg" onClick={handleSaveContent} disabled={savingContent} className="px-10 text-lg font-bold">
                 {savingContent ? "Publicando..." : "Salvar Perguntas >"}
+              </Button>
+            </div>
+          </TabsContent>
+
+          {/* IMAGES TAB */}
+          <TabsContent value="images" className="space-y-6">
+            {/* Logo & OG */}
+            <Card className="shadow-md border-0">
+              <CardHeader className="bg-purple-50 border-b">
+                <CardTitle className="text-xl">🖼️ Logo e Imagem de Compartilhamento</CardTitle>
+                <CardDescription>Envie a logo do seu site e a imagem que aparece quando alguém compartilha o link (OG Image).</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3 p-4 bg-gray-50 border rounded-xl">
+                  <label className="text-xs font-bold text-gray-500 uppercase">Logo do Site</label>
+                  {localContent.images.logo && (
+                    <div className="flex items-center gap-3">
+                      <img src={localContent.images.logo} alt="Logo" className="h-12 object-contain rounded border bg-white p-1" />
+                      <span className="text-xs text-green-600 font-medium">✅ Logo carregada</span>
+                    </div>
+                  )}
+                  <Input
+                    type="file" accept="image/*"
+                    disabled={uploading}
+                    className="bg-white cursor-pointer"
+                    onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, images: { ...localContent.images, logo: url }}))}
+                  />
+                  {uploading && <span className="text-xs text-blue-500 animate-pulse">Enviando...</span>}
+                </div>
+                <div className="space-y-3 p-4 bg-gray-50 border rounded-xl">
+                  <label className="text-xs font-bold text-gray-500 uppercase">Imagem OG (Preview de Compartilhamento)</label>
+                  <p className="text-xs text-gray-400">Aparece quando alguém cola o link no WhatsApp, Facebook, etc. Tamanho ideal: 1200×630px.</p>
+                  {localContent.images.ogImage && (
+                    <div className="flex items-center gap-3">
+                      <img src={localContent.images.ogImage} alt="OG" className="h-16 object-cover rounded border" />
+                      <span className="text-xs text-green-600 font-medium">✅ OG Image carregada</span>
+                    </div>
+                  )}
+                  <Input
+                    type="file" accept="image/*"
+                    disabled={uploading}
+                    className="bg-white cursor-pointer"
+                    onChange={e => handleFileUpload(e, url => setLocalContent({...localContent, images: { ...localContent.images, ogImage: url }}))}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Gallery */}
+            <Card className="shadow-md border-0">
+              <CardHeader className="bg-purple-50 border-b flex flex-row justify-between items-center">
+                <div>
+                  <CardTitle className="text-xl">📁 Galeria de Imagens do Site</CardTitle>
+                  <CardDescription>Adicione imagens para usar no site em diferentes formatos: Story, Feed, Reels ou Horizontal.</CardDescription>
+                </div>
+                <Button
+                  onClick={() => setLocalContent({...localContent, images: { ...localContent.images, gallery: [...localContent.images.gallery, { src: "", label: "Nova Imagem", format: "feed" }]}})}
+                  variant="outline"
+                  className="font-bold border-purple-500 text-purple-600 hover:bg-purple-50"
+                >
+                  <Plus className="w-4 h-4 mr-1" /> Adicionar Imagem
+                </Button>
+              </CardHeader>
+              <CardContent className="pt-6 space-y-4">
+                {localContent.images.gallery.length === 0 && (
+                  <div className="text-center py-12 text-gray-400 border-2 border-dashed rounded-xl">
+                    <p className="text-4xl mb-3">🖼️</p>
+                    <p className="font-semibold">Nenhuma imagem adicionada ainda.</p>
+                    <p className="text-sm mt-1">Clique em "Adicionar Imagem" para começar.</p>
+                  </div>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {localContent.images.gallery.map((img, idx) => (
+                    <div key={idx} className="p-4 bg-gray-50 border rounded-xl space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs font-bold uppercase text-gray-400 tracking-wider">Imagem #{idx + 1}</span>
+                        <Button
+                          variant="destructive" size="sm"
+                          onClick={() => {
+                            const n = localContent.images.gallery.filter((_, i) => i !== idx);
+                            setLocalContent({...localContent, images: { ...localContent.images, gallery: n }});
+                          }}
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                      </div>
+
+                      {img.src && (
+                        <div className={`w-full overflow-hidden rounded-lg border bg-white ${img.format === 'story' || img.format === 'reels' ? 'aspect-[9/16]' : img.format === 'feed' ? 'aspect-[4/5]' : 'aspect-video'}`}>
+                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                        </div>
+                      )}
+
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-500 uppercase">Identificação / Nome</label>
+                        <Input
+                          value={img.label}
+                          placeholder="Ex: Banner Principal"
+                          onChange={e => {
+                            const n = [...localContent.images.gallery];
+                            n[idx].label = e.target.value;
+                            setLocalContent({...localContent, images: { ...localContent.images, gallery: n }});
+                          }}
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-500 uppercase">Formato</label>
+                        <select
+                          className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm"
+                          value={img.format}
+                          onChange={e => {
+                            const n = [...localContent.images.gallery];
+                            n[idx].format = e.target.value as any;
+                            setLocalContent({...localContent, images: { ...localContent.images, gallery: n }});
+                          }}
+                        >
+                          <option value="story">Story — Vertical 9:16 (1080×1920px)</option>
+                          <option value="feed">Feed — Retrato 4:5 (1080×1350px)</option>
+                          <option value="reels">Reels — Vertical 9:16 (1080×1920px)</option>
+                          <option value="horizontal">Horizontal — Widescreen 16:9 (1920×1080px)</option>
+                        </select>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-500 uppercase">
+                          Arquivo da Imagem {uploading && <span className="text-blue-500 animate-pulse ml-1">Enviando...</span>}
+                        </label>
+                        <Input
+                          type="file" accept="image/*"
+                          disabled={uploading}
+                          className="bg-white cursor-pointer"
+                          onChange={e => handleFileUpload(e, url => {
+                            const n = [...localContent.images.gallery];
+                            n[idx].src = url;
+                            setLocalContent({...localContent, images: { ...localContent.images, gallery: n }});
+                          })}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="flex justify-end pt-4">
+              <Button size="lg" onClick={handleSaveContent} disabled={savingContent} className="px-10 text-lg font-bold bg-purple-600 hover:bg-purple-700">
+                {savingContent ? "Publicando..." : "Salvar Imagens >"}
               </Button>
             </div>
           </TabsContent>

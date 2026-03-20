@@ -14,6 +14,7 @@ export interface SiteContent {
     youtubeId: string;
     videoSrc: string;
     videoAspectRatio: "horizontal" | "vertical";
+    vslHistory: string[];
   };
   features: {
     badge: string;
@@ -53,6 +54,11 @@ export interface SiteContent {
     description: string;
     videos: { src: string; name: string; aspectRatio: "horizontal" | "vertical" }[];
   };
+  images: {
+    logo: string;
+    ogImage: string;
+    gallery: { src: string; label: string; format: "story" | "feed" | "reels" | "horizontal" }[];
+  };
 }
 
 export const defaultSiteContent: SiteContent = {
@@ -66,7 +72,8 @@ export const defaultSiteContent: SiteContent = {
     ctaUrl: "https://deploysites.online/",
     youtubeId: "wYbHpveuQQs",
     videoSrc: "/videos/hero-video.mp4",
-    videoAspectRatio: "horizontal"
+    videoAspectRatio: "horizontal",
+    vslHistory: ["/videos/hero-video.mp4"]
   },
   features: {
     badge: "O que você recebe",
@@ -135,6 +142,11 @@ export const defaultSiteContent: SiteContent = {
       { src: "/videos/testimonial-3.mp4", name: "Cliente 3", aspectRatio: "horizontal" },
       { src: "/videos/testimonial-4.mp4", name: "Cliente 4", aspectRatio: "horizontal" }
     ]
+  },
+  images: {
+    logo: "",
+    ogImage: "",
+    gallery: []
   }
 };
 
@@ -163,7 +175,8 @@ export function useSiteContent() {
         showcase: { ...defaultSiteContent.showcase, ...db.showcase },
         faq: { ...defaultSiteContent.faq, ...db.faq },
         footer: { ...defaultSiteContent.footer, ...db.footer },
-        testimonials: { ...defaultSiteContent.testimonials, ...db.testimonials }
+        testimonials: { ...defaultSiteContent.testimonials, ...db.testimonials },
+        images: { ...defaultSiteContent.images, ...db.images }
       } as SiteContent;
     }
   });

@@ -37,9 +37,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 grid-pattern" />
       
       <div className="container relative mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className={`grid grid-cols-1 ${hero.videoAspectRatio === 'vertical' ? 'lg:flex lg:flex-col lg:items-center lg:text-center' : 'lg:grid-cols-2'} gap-8 lg:gap-12 items-center`}>
           {/* Left: Text content */}
-          <div className="flex flex-col items-start text-left">
+          <div className={`flex flex-col ${hero.videoAspectRatio === 'vertical' ? 'items-center text-center lg:max-w-3xl' : 'items-start text-left'}`}>
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -78,31 +78,33 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm md:text-base text-muted-foreground max-w-lg mb-8 leading-relaxed"
+              className={`text-sm md:text-base text-muted-foreground ${hero.videoAspectRatio === 'vertical' ? 'max-w-2xl mx-auto' : 'max-w-lg'} mb-8 leading-relaxed`}
             >
               {hero.description}
             </motion.p>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col items-start w-full"
-            >
-              <a href={hero.ctaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto bg-primary text-primary-foreground text-sm md:text-base px-8 md:px-10 py-5 md:py-6 rounded-xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all glow-primary font-bold tracking-wide"
-                >
-                  {hero.ctaText}
-                  <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
-                </Button>
-              </a>
-              <p className="text-xs text-muted-foreground mt-3">
-                🔒 Acesso imediato • Créditos ilimitados • Garantia de 7 dias
-              </p>
-            </motion.div>
+            {/* CTA Desktop (If horizontal) */}
+            {hero.videoAspectRatio !== 'vertical' && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="flex flex-col items-start w-full"
+              >
+                <a href={hero.ctaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto bg-primary text-primary-foreground text-sm md:text-base px-8 md:px-10 py-5 md:py-6 rounded-xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all glow-primary font-bold tracking-wide"
+                  >
+                    {hero.ctaText}
+                    <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                </a>
+                <p className="text-xs text-muted-foreground mt-3">
+                  🔒 Acesso imediato • Créditos ilimitados • Garantia de 7 dias
+                </p>
+              </motion.div>
+            )}
           </div>
 
           {/* Right: Native Video Player */}
@@ -110,10 +112,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className={`w-full ${hero.videoAspectRatio === 'vertical' ? 'flex justify-center' : ''}`}
+            className={`w-full ${hero.videoAspectRatio === 'vertical' ? 'flex justify-center flex-col items-center' : ''}`}
           >
-            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden ${hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] w-full max-w-sm' : 'aspect-video w-full'} bg-card border border-border shadow-lg`}>
+            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden ${hero.videoAspectRatio === 'vertical' ? 'aspect-[9/16] w-full max-w-[320px] md:max-w-[380px]' : 'aspect-video w-full'} bg-card border border-border shadow-lg`}>
               <video
+                key={hero.videoSrc}
                 ref={videoRef}
                 src={hero.videoSrc}
                 poster={THUMBNAIL_URL}
@@ -153,6 +156,29 @@ const HeroSection = () => {
                 </div>
               )}
             </div>
+
+            {/* CTA (Centered under vertical video) */}
+            {hero.videoAspectRatio === 'vertical' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="flex flex-col items-center w-full mt-10"
+              >
+                <a href={hero.ctaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto bg-primary text-primary-foreground text-sm md:text-base px-10 py-6 md:py-7 rounded-xl border-0 hover:bg-primary/90 hover:scale-[1.02] transition-all glow-primary font-bold tracking-wide"
+                  >
+                    {hero.ctaText}
+                    <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                </a>
+                <p className="text-xs text-muted-foreground mt-4 text-center">
+                  🔒 Acesso imediato • Créditos ilimitados • Garantia de 7 dias
+                </p>
+              </motion.div>
+            )}
           </motion.div>
         </div>
 
